@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create *)",
+      "Bash(npm --version)",
+      "Bash(npx --yes create-astro@latest . --template minimal --no-install --no-git)",
+      "Bash(npm install *)",
+      "Bash(/c/Users/jesus/AppData/Roaming/nvm/v20.11.1/node.exe --version)",
+      "Bash(/c/Users/jesus/AppData/Roaming/nvm/v20.11.1/corepack.cmd --version)",
+      "Bash(corepack enable *)",
+      "Bash(pnpm --version)",
+      "Bash(pnpm add *)",
+      "Bash(pnpm approve-builds *)",
+      "Bash(pnpm run *)",
+      "Bash(pnpm remove *)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(gh auth *)",
+      "Bash(git config *)",
+      "Bash(git --version)",
+      "Bash(cmdkey /list)"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import FeaturedProjects from '../components/home/FeaturedProjects.astro';
+import cv from '../data/cv.json';
+---
+
+<PageLayout
+  title={`${cv.name} — ${cv.title}`}
+  description={cv.summary}
+>
+  <Hero />
+  <FeaturedProjects />
+</PageLayout>

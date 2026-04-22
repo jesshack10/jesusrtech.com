@@ -1,0 +1,74 @@
+---
+import NavLink from './NavLink.astro';
+import ThemeToggle from '../ui/ThemeToggle.astro';
+
+const navLinks = [
+  { href: '/projects', label: 'Projects' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/cv', label: 'CV' },
+  { href: '/uses', label: 'Uses' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<header class="sticky top-0 z-50 bg-surface/80 backdrop-blur-md border-b border-border">
+  <nav class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="/" class="text-foreground font-semibold tracking-tight hover:text-green transition-colors">
+      jesusrtech
+    </a>
+
+    <!-- Desktop nav -->
+    <ul class="hidden md:flex items-center gap-1">
+      {navLinks.map((link) => (
+        <li>
+          <NavLink href={link.href}>{link.label}</NavLink>
+        </li>
+      ))}
+    </ul>
+
+    <div class="flex items-center gap-3">
+      <ThemeToggle />
+
+      <!-- Mobile hamburger -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-2 rounded-md text-secondary hover:text-foreground hover:bg-elevated transition-colors"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <svg id="icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-border bg-surface">
+    <ul class="max-w-5xl mx-auto px-6 py-4 flex flex-col gap-1">
+      {navLinks.map((link) => (
+        <li>
+          <NavLink href={link.href} mobile>{link.label}</NavLink>
+        </li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden', isOpen);
+    iconOpen?.classList.toggle('hidden', !isOpen);
+    iconClose?.classList.toggle('hidden', isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+</script>

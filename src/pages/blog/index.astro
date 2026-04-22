@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+import BlogCard from '../../components/blog/BlogCard.astro';
+import SectionHeading from '../../components/ui/SectionHeading.astro';
+import Tag from '../../components/ui/Tag.astro';
+import { sortByDate } from '../../utils/sortPosts';
+
+const posts = sortByDate(await getCollection('blog'));
+
+const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+---
+
+<PageLayout
+  title="Blog — jesusrtech"
+  description="Articles on software engineering, tooling, and things I find worth writing about."
+>
+  <div class="max-w-2xl mx-auto px-6 py-16">
+    <SectionHeading label="Writing">Blog</SectionHeading>
+
+    {allTags.length > 0 && (
+      <div class="flex flex-wrap gap-2 mb-10">
+        {allTags.map((tag) => <Tag variant="neutral">{tag}</Tag>)}
+      </div>
+    )}
+
+    {posts.length === 0 ? (
+      <p class="text-secondary">No posts yet. Check back soon.</p>
+    ) : (
+      <div>
+        {posts.map((post) => <BlogCard post={post} />)}
+      </div>
+    )}
+  </div>
+</PageLayout>

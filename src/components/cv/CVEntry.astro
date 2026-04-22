@@ -1,0 +1,39 @@
+---
+interface Props {
+  role: string;
+  company: string;
+  companyUrl?: string;
+  period: string;
+  location: string;
+  bullets: string[];
+}
+
+const { role, company, companyUrl, period, location, bullets } = Astro.props;
+---
+
+<div class="mb-8 last:mb-0 grid sm:grid-cols-[1fr_auto] gap-x-4">
+  <div>
+    <div class="flex flex-wrap items-baseline gap-x-2 mb-1">
+      <h3 class="font-semibold text-foreground">{role}</h3>
+      <span class="text-secondary text-sm">·</span>
+      {companyUrl ? (
+        <a href={companyUrl} target="_blank" rel="noopener noreferrer"
+           class="text-blue text-sm hover:underline">{company}</a>
+      ) : (
+        <span class="text-secondary text-sm">{company}</span>
+      )}
+    </div>
+    <ul class="mt-2 space-y-1">
+      {bullets.map((bullet) => (
+        <li class="text-sm text-secondary leading-relaxed flex gap-2">
+          <span class="text-muted mt-1.5 shrink-0">–</span>
+          <span>{bullet}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div class="text-right mt-0.5 shrink-0">
+    <p class="text-xs text-muted whitespace-nowrap">{period}</p>
+    <p class="text-xs text-muted">{location}</p>
+  </div>
+</div>

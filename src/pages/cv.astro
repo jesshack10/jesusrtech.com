@@ -1,0 +1,80 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import CVSection from '../components/cv/CVSection.astro';
+import CVEntry from '../components/cv/CVEntry.astro';
+import SkillPills from '../components/cv/SkillPills.astro';
+import Button from '../components/ui/Button.astro';
+import cv from '../data/cv.json';
+---
+
+<PageLayout
+  title={`CV — ${cv.name}`}
+  description={`Resume and professional background of ${cv.name}, ${cv.title}.`}
+>
+  <div class="max-w-3xl mx-auto px-6 py-16">
+    <!-- Header -->
+    <div class="mb-16 pb-10 border-b border-border flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+      <div>
+        <h1 class="text-3xl font-bold text-foreground mb-1">{cv.name}</h1>
+        <p class="text-secondary">{cv.title} · {cv.location}</p>
+      </div>
+      <Button href="/jesus-r-resume.pdf" variant="secondary" target="_blank" rel="noopener noreferrer">
+        Download PDF
+      </Button>
+    </div>
+
+    <!-- Summary -->
+    <CVSection title="Summary">
+      <p class="text-secondary leading-relaxed">{cv.summary}</p>
+    </CVSection>
+
+    <!-- Experience -->
+    <CVSection title="Experience">
+      {cv.experience.map((entry) => (
+        <CVEntry
+          role={entry.role}
+          company={entry.company}
+          companyUrl={entry.companyUrl}
+          period={entry.period}
+          location={entry.location}
+          bullets={entry.bullets}
+        />
+      ))}
+    </CVSection>
+
+    <!-- Education -->
+    <CVSection title="Education">
+      {cv.education.map((edu) => (
+        <div class="mb-4 last:mb-0 grid sm:grid-cols-[1fr_auto] gap-x-4">
+          <div>
+            <h3 class="font-semibold text-foreground">{edu.degree}</h3>
+            <p class="text-sm text-secondary">{edu.school}</p>
+          </div>
+          <div class="text-right mt-0.5 shrink-0">
+            <p class="text-xs text-muted">{edu.period}</p>
+            <p class="text-xs text-muted">{edu.location}</p>
+          </div>
+        </div>
+      ))}
+    </CVSection>
+
+    <!-- Skills -->
+    <CVSection title="Skills">
+      {cv.skills.map((skillGroup) => (
+        <SkillPills category={skillGroup.category} items={skillGroup.items} />
+      ))}
+    </CVSection>
+
+    <!-- Certifications -->
+    {cv.certifications.length > 0 && (
+      <CVSection title="Certifications">
+        {cv.certifications.map((cert) => (
+          <div class="flex justify-between items-baseline mb-3 last:mb-0">
+            <span class="text-foreground text-sm font-medium">{cert.name}</span>
+            <span class="text-muted text-xs">{cert.issuer} · {cert.year}</span>
+          </div>
+        ))}
+      </CVSection>
+    )}
+  </div>
+</PageLayout>

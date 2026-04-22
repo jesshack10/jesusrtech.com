@@ -1,0 +1,41 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import uses from '../data/uses.json';
+---
+
+<PageLayout
+  title="Uses — jesusrtech"
+  description="The hardware, software, and tools I use every day for development and productivity."
+>
+  <div class="max-w-2xl mx-auto px-6 py-16">
+    <SectionHeading label="Setup">Uses</SectionHeading>
+    <p class="text-secondary leading-relaxed mb-12">
+      The tools I rely on for work and daily development. Inspired by
+      <a href="https://uses.tech" target="_blank" rel="noopener noreferrer" class="text-blue hover:underline">uses.tech</a>.
+    </p>
+
+    {uses.categories.map((category) => (
+      <section class="mb-12">
+        <h2 class="text-xs font-semibold uppercase tracking-widest text-muted mb-6 pb-3 border-b border-border">
+          {category.name}
+        </h2>
+        <div class="space-y-5">
+          {category.items.map((item) => (
+            <div>
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-medium text-foreground hover:text-green transition-colors"
+              >
+                {item.name} →
+              </a>
+              <p class="text-sm text-secondary mt-0.5 leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</PageLayout>

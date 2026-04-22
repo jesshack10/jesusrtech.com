@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+import ProjectCard from '../../components/projects/ProjectCard.astro';
+import SectionHeading from '../../components/ui/SectionHeading.astro';
+
+const projects = (await getCollection('projects'))
+  .sort((a, b) => {
+    if (a.data.order !== undefined && b.data.order !== undefined) {
+      return a.data.order - b.data.order;
+    }
+    return b.data.pubDate.getTime() - a.data.pubDate.getTime();
+  });
+---
+
+<PageLayout
+  title="Projects — jesusrtech"
+  description="A selection of projects I've built or contributed to."
+>
+  <div class="max-w-5xl mx-auto px-6 py-16">
+    <SectionHeading label="Work">Projects</SectionHeading>
+
+    {projects.length === 0 ? (
+      <p class="text-secondary">No projects yet.</p>
+    ) : (
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {projects.map((project) => <ProjectCard project={project} />)}
+      </div>
+    )}
+  </div>
+</PageLayout>

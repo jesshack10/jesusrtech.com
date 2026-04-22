@@ -1,0 +1,38 @@
+{
+  "categories": [
+    {
+      "name": "Hardware",
+      "items": [
+        { "name": "MacBook Pro 14\"", "description": "M3 Pro chip. Handles everything from daily development to video rendering without breaking a sweat.", "url": "https://www.apple.com/macbook-pro/" },
+        { "name": "LG 27UK850-W", "description": "27\" 4K USB-C monitor. Great color accuracy, perfect for side-by-side coding and design work.", "url": "https://www.lg.com" },
+        { "name": "Keychron K2", "description": "Compact 75% mechanical keyboard with red switches. Quiet enough for calls, tactile enough to enjoy.", "url": "https://www.keychron.com" },
+        { "name": "Logitech MX Master 3", "description": "The best mouse I've used. The scroll wheel alone is worth it.", "url": "https://www.logitech.com" }
+      ]
+    },
+    {
+      "name": "Editor & Terminal",
+      "items": [
+        { "name": "VS Code", "description": "Primary editor. Fast, extensible, and has the best ecosystem for web development.", "url": "https://code.visualstudio.com" },
+        { "name": "Cursor", "description": "AI-native fork of VS Code I use for greenfield projects and exploration.", "url": "https://cursor.sh" },
+        { "name": "Warp", "description": "Modern terminal with AI command completion and shareable command blocks.", "url": "https://www.warp.dev" },
+        { "name": "Catppuccin Mocha", "description": "My theme of choice across editor and terminal. Easy on the eyes for long sessions.", "url": "https://github.com/catppuccin" }
+      ]
+    },
+    {
+      "name": "Apps",
+      "items": [
+        { "name": "Raycast", "description": "Launcher, clipboard history, window manager, and snippet library — all in one.", "url": "https://www.raycast.com" },
+        { "name": "Linear", "description": "For personal project tracking. Keyboard-driven and beautifully fast.", "url": "https://linear.app" },
+        { "name": "Obsidian", "description": "Second brain for notes, research, and writing drafts. Plain Markdown files, no lock-in.", "url": "https://obsidian.md" },
+        { "name": "Figma", "description": "Design and wireframing. I use it to prototype UIs before touching code.", "url": "https://www.figma.com" }
+      ]
+    },
+    {
+      "name": "Browser Extensions",
+      "items": [
+        { "name": "uBlock Origin", "description": "Best-in-class ad and tracker blocker. Non-negotiable.", "url": "https://github.com/gorhill/uBlock" },
+        { "name": "Refined GitHub", "description": "Adds dozens of small quality-of-life improvements to GitHub.", "url": "https://github.com/refined-github/refined-github" }
+      ]
+    }
+  ]
+}

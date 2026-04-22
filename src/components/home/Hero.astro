@@ -1,0 +1,23 @@
+---
+import Button from '../ui/Button.astro';
+import cv from '../../data/cv.json';
+---
+
+<section class="max-w-5xl mx-auto px-6 pt-24 pb-16">
+  <div class="max-w-2xl">
+    <p class="text-sm font-semibold uppercase tracking-widest text-muted mb-4">
+      {cv.title}
+    </p>
+    <h1 class="text-4xl sm:text-5xl font-bold text-foreground leading-tight mb-6">
+      Hi, I'm <span class="text-green">{cv.name.split(' ')[0]}</span>
+    </h1>
+    <p class="text-lg text-secondary leading-relaxed mb-8 max-w-prose">
+      {cv.summary}
+    </p>
+    <div class="flex flex-wrap gap-3">
+      <Button href="/projects" variant="primary">View Projects</Button>
+      <Button href="/blog" variant="secondary">Read Blog</Button>
+      <Button href="/cv" variant="ghost">Resume →</Button>
+    </div>
+  </div>
+</section>

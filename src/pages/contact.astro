@@ -1,0 +1,22 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import SocialLinks from '../components/contact/SocialLinks.astro';
+import cv from '../data/cv.json';
+---
+
+<PageLayout
+  title="Contact — jesusrtech"
+  description="Get in touch with me via email or social networks."
+>
+  <div class="max-w-xl mx-auto px-6 py-16">
+    <SectionHeading label="Get in touch">Contact</SectionHeading>
+
+    <p class="text-secondary leading-relaxed mb-10">
+      I'm always open to interesting conversations, project collaborations, or just saying hi.
+      The best way to reach me is via email or LinkedIn.
+    </p>
+
+    <SocialLinks socials={cv.socials} email={cv.email} />
+  </div>
+</PageLayout>

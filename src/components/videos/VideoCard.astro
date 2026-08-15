@@ -1,0 +1,91 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { videoThumbnail } from '../../utils/video';
+import { formatDateShort } from '../../utils/formatDate';
+
+interface Props {
+  video: CollectionEntry<'videos'>;
+  index?: number;
+}
+
+const { video, index = 0 } = Astro.props;
+const { title, description, url, platform, thumbnail, publishedAt, duration } = video.data;
+
+const thumb = videoThumbnail(url, thumbnail);
+
+const platformLabel = {
+  youtube:    'YouTube',
+  twitch:     'Twitch',
+  conference: 'Talk',
+  other:      'Video',
+}[platform];
+---
+
+<article
+  class="bp-ticks group relative flex flex-col border border-border bg-surface/40
+         transition-colors duration-200 hover:border-accent/40 hover:bg-surface"
+  data-reveal
+  style={`--reveal-delay: ${index * 70}ms`}
+>
+  <div class="relative aspect-video overflow-hidden border-b border-line bg-elevated">
+    {thumb ? (
+      <img
+        src={thumb}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        width="640"
+        height="360"
+        class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+      />
+    ) : (
+      <div class="flex h-full w-full items-center justify-center">
+        <span class="bp-label">No thumbnail</span>
+      </div>
+    )}
+
+    <!-- Play affordance -->
+    <div
+      aria-hidden="true"
+      class="absolute inset-0 flex items-center justify-center bg-black/25 opacity-0
+             transition-opacity duration-200 group-hover:opacity-100"
+    >
+      <span class="flex h-12 w-12 items-center justify-center rounded-full border border-white/70 bg-black/40">
+        <svg class="ml-0.5 h-4 w-4" viewBox="0 0 16 16" fill="#fff" aria-hidden="true">
+          <path d="M4 2.5l9 5.5-9 5.5z" />
+        </svg>
+      </span>
+    </div>
+
+    {duration && (
+      <span class="absolute bottom-2 right-2 rounded-[2px] bg-black/75 px-1.5 py-0.5 font-mono text-[11px] leading-none text-white">
+        {duration}
+      </span>
+    )}
+  </div>
+
+  <div class="flex flex-1 flex-col p-5">
+    <div class="mb-3 flex items-center gap-3">
+      <span class="bp-label text-accent">{platformLabel}</span>
+      <span aria-hidden="true" class="h-3 w-px bg-border"></span>
+      <span class="bp-label">
+        <time datetime={publishedAt.toISOString()}>{formatDateShort(publishedAt)}</time>
+      </span>
+    </div>
+
+    <h3 class="text-base font-semibold leading-snug tracking-tight text-foreground">
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="transition-colors after:absolute after:inset-0 hover:text-accent"
+      >
+        {title}
+      </a>
+    </h3>
+
+    <p class="mt-2 line-clamp-3 text-[13px] leading-relaxed text-secondary">
+      {description}
+    </p>
+  </div>
+</article>

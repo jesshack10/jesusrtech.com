@@ -1,0 +1,60 @@
+---
+import Button from '../ui/Button.astro';
+import AvailabilityBadge from '../ui/AvailabilityBadge.astro';
+import site from '../../data/site.json';
+import { primaryCta, hasBooking } from '../../utils/cta';
+
+const cta = primaryCta();
+---
+
+<section class="relative overflow-hidden border-t border-line" id="contact">
+  <div
+    aria-hidden="true"
+    class="bp-grid pointer-events-none absolute inset-0 opacity-60
+           [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_10%,transparent_75%)]"
+  ></div>
+
+  <div class="relative mx-auto max-w-3xl px-6 py-24 text-center">
+    <div class="flex justify-center" data-reveal>
+      <AvailabilityBadge />
+    </div>
+
+    <h2
+      class="mt-7 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl text-balance"
+      data-reveal
+      style="--reveal-delay: 80ms"
+    >
+      Have something that needs building?
+    </h2>
+
+    <p
+      class="mx-auto mt-4 max-w-xl leading-relaxed text-secondary text-pretty"
+      data-reveal
+      style="--reveal-delay: 160ms"
+    >
+      Tell me what you're working on and what's in the way. If I'm not the right
+      person for it, I'll say so — and point you at someone who is.
+    </p>
+
+    <div
+      class="mt-9 flex flex-wrap items-center justify-center gap-3"
+      data-reveal
+      style="--reveal-delay: 240ms"
+    >
+      <Button href={cta.href} external={cta.external} variant="primary">
+        {cta.label}
+        <span aria-hidden="true" class="transition-transform duration-150 group-hover/btn:translate-x-0.5">→</span>
+      </Button>
+
+      {hasBooking() && (
+        <Button href={`mailto:${site.email}`} variant="secondary">
+          Or send an email
+        </Button>
+      )}
+    </div>
+
+    <p class="mt-6 font-mono text-[11px] tracking-wide text-muted" data-reveal style="--reveal-delay: 300ms">
+      {site.email}
+    </p>
+  </div>
+</section>

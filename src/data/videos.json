@@ -1,0 +1,38 @@
+[
+  {
+    "id": "placeholder-1",
+    "title": "TODO — replace with a real video title",
+    "description": "TODO — one or two sentences on what a viewer gets out of this. Delete these three placeholder entries once you add real videos; the Videos section hides itself automatically when this file is empty.",
+    "url": "https://www.youtube.com/watch?v=REPLACE_WITH_VIDEO_ID",
+    "platform": "youtube",
+    "thumbnail": "/placeholder-video.svg",
+    "publishedAt": "2026-01-15",
+    "duration": "12:04",
+    "tags": ["placeholder"],
+    "featured": true
+  },
+  {
+    "id": "placeholder-2",
+    "title": "TODO — replace with a real video title",
+    "description": "TODO — drop the `thumbnail` field entirely for YouTube videos and the real thumbnail is derived from the URL automatically.",
+    "url": "https://www.youtube.com/watch?v=REPLACE_WITH_VIDEO_ID",
+    "platform": "youtube",
+    "thumbnail": "/placeholder-video.svg",
+    "publishedAt": "2025-11-02",
+    "duration": "8:41",
+    "tags": ["placeholder"],
+    "featured": true
+  },
+  {
+    "id": "placeholder-3",
+    "title": "TODO — a conference talk, for example",
+    "description": "TODO — set `platform` to \"conference\" or \"twitch\" for non-YouTube content, and supply your own `thumbnail` path for those.",
+    "url": "https://www.youtube.com/watch?v=REPLACE_WITH_VIDEO_ID",
+    "platform": "conference",
+    "thumbnail": "/placeholder-video.svg",
+    "publishedAt": "2025-09-20",
+    "duration": "31:15",
+    "tags": ["placeholder"],
+    "featured": true
+  }
+]

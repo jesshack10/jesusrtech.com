@@ -15,8 +15,8 @@ const { Content } = await render(project);
 const { title, description, pubDate, tags, status, repoUrl, liveUrl } = project.data;
 
 const statusColors = {
-  active:    'green',
-  completed: 'blue',
+  active:    'ok',
+  completed: 'info',
   archived:  'neutral',
 } as const;
 ---

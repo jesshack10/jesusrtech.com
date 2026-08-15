@@ -18,7 +18,7 @@ const { role, company, companyUrl, period, location, bullets } = Astro.props;
       <span class="text-secondary text-sm">·</span>
       {companyUrl ? (
         <a href={companyUrl} target="_blank" rel="noopener noreferrer"
-           class="text-blue text-sm hover:underline">{company}</a>
+           class="text-accent text-sm hover:underline">{company}</a>
       ) : (
         <span class="text-secondary text-sm">{company}</span>
       )}

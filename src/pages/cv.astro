@@ -5,6 +5,7 @@ import CVEntry from '../components/cv/CVEntry.astro';
 import SkillPills from '../components/cv/SkillPills.astro';
 import Button from '../components/ui/Button.astro';
 import cv from '../data/cv.json';
+import site from '../data/site.json';
 ---
 
 <PageLayout
@@ -18,9 +19,13 @@ import cv from '../data/cv.json';
         <h1 class="text-3xl font-bold text-foreground mb-1">{cv.name}</h1>
         <p class="text-secondary">{cv.title} · {cv.location}</p>
       </div>
-      <Button href="/jesus-r-resume.pdf" variant="secondary" target="_blank" rel="noopener noreferrer">
-        Download PDF
-      </Button>
+      {/* Only rendered once a real PDF exists — set `cvPdf` in site.json.
+          A download button pointing at a missing file is worse than none. */}
+      {site.cvPdf && (
+        <Button href={site.cvPdf} variant="secondary" external>
+          Download PDF
+        </Button>
+      )}
     </div>
 
     <!-- Summary -->

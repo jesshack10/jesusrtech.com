@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import site from '../data/site.json';
 
 interface Props {
   title: string;
@@ -12,7 +13,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,6 +22,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="author" content={site.name} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -35,27 +37,77 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
 
-    <!-- Google Fonts -->
+    <!-- Fonts. Inter for text, JetBrains Mono for the annotation voice —
+         the mono face was referenced by the old theme but never loaded. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Theme flash prevention — must run before first paint -->
+    <!-- Runs before first paint: sets the theme and marks JS as available
+         so reveal animations can start hidden without risking a blank page
+         for anyone without JavaScript. -->
     <script is:inline>
       (function () {
-        const stored = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (stored === 'dark' || (!stored && prefersDark)) {
+        document.documentElement.classList.remove('no-js');
+
+        var stored = null;
+        try {
+          stored = localStorage.getItem('theme');
+        } catch (e) {
+          /* private mode — fall through to the system preference */
+        }
+
+        /* Follow the system, leaning dark: an explicit OS preference always
+           wins, but a device that reports no preference at all gets dark
+           rather than light. */
+        var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        var dark = stored ? stored === 'dark' : !prefersLight;
+
+        if (dark) {
           document.documentElement.classList.add('dark');
         }
       })();
     </script>
   </head>
+
   <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100]
+             focus:rounded-[3px] focus:bg-accent focus:px-4 focus:py-2
+             focus:text-sm focus:font-medium focus:text-[var(--accent-ink)]"
+    >
+      Skip to content
+    </a>
+
     <slot />
+
+    <script>
+      // Scroll reveals. Elements start hidden via CSS and are revealed once.
+      // Anything already on screen reveals immediately, so the fold never
+      // sits blank waiting for a scroll that may not come.
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const targets = document.querySelectorAll<HTMLElement>('[data-reveal]');
+
+      if (reduced.matches || !('IntersectionObserver' in window)) {
+        targets.forEach((el) => el.classList.add('is-revealed'));
+      } else {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              entry.target.classList.add('is-revealed');
+              observer.unobserve(entry.target);
+            }
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.05 },
+        );
+
+        targets.forEach((el) => observer.observe(el));
+      }
+    </script>
   </body>
 </html>
-

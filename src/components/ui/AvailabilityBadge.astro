@@ -1,0 +1,49 @@
+---
+import site from '../../data/site.json';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const status = site.availability.status as 'open' | 'limited' | 'closed';
+
+const config = {
+  open:    { dot: 'var(--ok)',     text: 'Available for work' },
+  limited: { dot: 'var(--accent)', text: 'Limited availability' },
+  closed:  { dot: 'var(--text-muted)', text: 'Not taking new work' },
+};
+
+const { dot, text } = config[status] ?? config.closed;
+const message = site.availability.message?.trim();
+---
+
+<div
+  class:list={[
+    'inline-flex items-center gap-2.5 rounded-[3px] border border-border bg-surface px-3 py-1.5',
+    className,
+  ]}
+>
+  <span class="relative flex h-2 w-2 shrink-0" aria-hidden="true">
+    {status === 'open' && (
+      <span
+        class="absolute inline-flex h-full w-full animate-ping rounded-full opacity-60"
+        style={`background-color: ${dot}`}
+      ></span>
+    )}
+    <span
+      class="relative inline-flex h-2 w-2 rounded-full"
+      style={`background-color: ${dot}`}
+    ></span>
+  </span>
+
+  <span class="bp-label text-secondary">{text}</span>
+
+  {message && (
+    <>
+      <span aria-hidden="true" class="h-3 w-px bg-border"></span>
+      <span class="text-[13px] text-secondary">{message}</span>
+    </>
+  )}
+</div>

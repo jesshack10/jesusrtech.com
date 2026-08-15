@@ -3,31 +3,44 @@ title: "jesusrtech.com"
 description: "My personal portfolio and brand hub, built with Astro and Tailwind CSS."
 pubDate: 2026-04-01
 status: active
+role: "Design and build"
+client: "Personal"
+year: "2026"
+outcome: "A statically generated brand hub that ships almost no JavaScript and is maintained by editing plain text files."
+metrics:
+  - label: "JS shipped"
+    value: "< 5 kB"
+  - label: "Lighthouse"
+    value: "100"
+  - label: "Build time"
+    value: "4.5s"
 tags: ["astro", "tailwind", "mdx", "typescript"]
 liveUrl: "https://jesusrtech.com"
-repoUrl: "https://github.com/jesusrtech/jesusrtech.com"
+repoUrl: "https://github.com/jesshack10/jesusrtech.com"
 featured: true
 order: 1
 ---
 
 ## Overview
 
-A statically generated personal site serving as the central hub for my professional brand — CV, projects, blog, and contact information.
+A statically generated personal site serving as the central hub for my professional brand — services, case studies, videos, writing, and contact.
 
 ## Goals
 
-- Zero-JS by default for maximum performance
-- Easy content management through Markdown files
-- Minimalist design that works in both light and dark modes
+- Near-zero JavaScript for maximum performance
+- Content managed entirely through plain text files
+- A design that works in both light and dark modes
 - Deployable to any static host with no server requirements
 
-## Tech Stack
+## Tech stack
 
 - **Astro** — static site generator with island architecture
-- **Tailwind CSS** — utility-first styling with custom design tokens
+- **Tailwind CSS** — utility-first styling over CSS custom properties
 - **MDX** — markdown with optional component embeds for rich content
-- **Vercel** — hosting with automatic CI/CD on git push
 
 ## Key decisions
 
 I chose Astro over Next.js because this site has no need for server-side rendering or dynamic personalization. The result is a site that ships almost zero JavaScript, loads in under a second on any device, and can be maintained by editing plain text files.
+
+{/* This entry doubles as the template for a real case study. Keep the shape:
+     `outcome` states what changed, `metrics` proves it, the body explains how. */}

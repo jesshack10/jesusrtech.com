@@ -1,0 +1,43 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import services from '../../data/services.json';
+---
+
+<section class="mx-auto max-w-6xl px-6 py-20" id="services">
+  <SectionHeading index="01" label="Services" lede={services.intro}>
+    How I can help
+  </SectionHeading>
+
+  <div class="grid gap-3 sm:grid-cols-2">
+    {services.items.map((service, i) => (
+      <article
+        class="bp-ticks flex flex-col border border-border bg-surface/40 p-6
+               transition-colors duration-200 hover:border-accent/40 hover:bg-surface"
+        data-reveal
+        style={`--reveal-delay: ${i * 70}ms`}
+      >
+        <div class="mb-4 flex items-center justify-between gap-4">
+          <span class="bp-label text-accent">{service.code}</span>
+          <span class="bp-label">{service.duration}</span>
+        </div>
+
+        <h3 class="text-lg font-semibold tracking-tight text-foreground">
+          {service.title}
+        </h3>
+
+        <p class="mt-2.5 text-sm leading-relaxed text-secondary text-pretty">
+          {service.summary}
+        </p>
+
+        <ul class="mt-5 space-y-2 border-t border-line pt-4">
+          {service.deliverables.map((item) => (
+            <li class="flex gap-2.5 text-[13px] leading-snug text-secondary">
+              <span aria-hidden="true" class="mt-[7px] h-px w-2.5 shrink-0 bg-accent"></span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </div>
+</section>

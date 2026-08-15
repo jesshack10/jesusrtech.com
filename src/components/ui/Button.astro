@@ -2,27 +2,52 @@
 interface Props {
   href?: string;
   variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'sm' | 'md';
+  external?: boolean;
   class?: string;
   [key: string]: unknown;
 }
 
-const { href, variant = 'primary', class: className, ...rest } = Astro.props;
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  external = false,
+  class: className,
+  ...rest
+} = Astro.props;
 
-const base = 'inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green';
+const base =
+  'group/btn inline-flex items-center justify-center gap-2 rounded-[3px] font-medium ' +
+  'tracking-tight transition-all duration-150 active:translate-y-px ' +
+  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent';
+
+const sizes = {
+  sm: 'px-3 py-1.5 text-[13px]',
+  md: 'px-5 py-2.5 text-sm',
+};
 
 const variants = {
-  primary:   'bg-green text-base hover:opacity-90 active:scale-[0.98]',
-  secondary: 'border border-border text-foreground hover:bg-elevated active:scale-[0.98]',
-  ghost:     'text-secondary hover:text-foreground hover:bg-elevated',
+  primary:
+    'bg-accent text-[var(--accent-ink)] hover:bg-[var(--accent-hi)] ' +
+    'shadow-[0_1px_0_0_rgba(0,0,0,0.06)]',
+  secondary:
+    'border border-border text-foreground hover:border-accent hover:text-accent bg-transparent',
+  ghost:
+    'text-secondary hover:text-foreground',
 };
+
+const externalAttrs = external
+  ? { target: '_blank', rel: 'noopener noreferrer' }
+  : {};
 ---
 
 {href ? (
-  <a href={href} class:list={[base, variants[variant], className]} {...rest}>
+  <a href={href} class:list={[base, sizes[size], variants[variant], className]} {...externalAttrs} {...rest}>
     <slot />
   </a>
 ) : (
-  <button class:list={[base, variants[variant], className]} {...rest}>
+  <button class:list={[base, sizes[size], variants[variant], className]} {...rest}>
     <slot />
   </button>
 )}

@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import VideoCard from '../videos/VideoCard.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+import Button from '../ui/Button.astro';
+
+const all = await getCollection('videos');
+
+const featured = all.filter((v) => v.data.featured);
+const pool = featured.length > 0 ? featured : all;
+
+const videos = pool
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+  .slice(0, 3);
+---
+
+{videos.length > 0 && (
+  <section class="border-t border-line" id="videos">
+    <div class="mx-auto max-w-6xl px-6 py-20">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <SectionHeading
+          index="03"
+          label="Video"
+          lede="Talks, walkthroughs, and build logs — the fastest way to see how I think through a problem."
+          class="mb-10 flex-1"
+        >
+          Watch me work
+        </SectionHeading>
+      </div>
+
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {videos.map((video, i) => (
+          <VideoCard video={video} index={i} />
+        ))}
+      </div>
+
+      <div class="mt-8">
+        <Button href="/videos" variant="secondary" size="sm">
+          All videos
+          <span aria-hidden="true" class="transition-transform duration-150 group-hover/btn:translate-x-0.5">→</span>
+        </Button>
+      </div>
+    </div>
+  </section>
+)}

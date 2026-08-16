@@ -1,0 +1,56 @@
+{
+  "_readme": "Consulting offers shown on the home page. These are STARTER SUGGESTIONS shaped to the blueprint layout — rewrite every one in your own words. Keep 3 or 4; more dilutes the pitch. 'deliverables' should be concrete nouns a client receives, not activities.",
+
+  "intro": "Ways we can work together. Every engagement starts with a short call to check the fit — no pitch deck, no pressure.",
+
+  "items": [
+    {
+      "code": "S-01",
+      "title": "Performance audit",
+      "summary": "TODO — a fixed-scope review of a slow or expensive system, ending in a prioritised plan you can act on with or without me.",
+      "deliverables": [
+        "Written findings report with measurements",
+        "Prioritised fix list, ranked by effort against impact",
+        "A walkthrough call with your engineers"
+      ],
+      "duration": "1–2 weeks",
+      "featured": true
+    },
+    {
+      "code": "S-02",
+      "title": "Fractional senior engineer",
+      "summary": "TODO — I join your team part-time to raise the technical bar: shipping features, reviewing code, and mentoring the engineers you already have.",
+      "deliverables": [
+        "Shipped features in your codebase",
+        "Code review and architectural guidance",
+        "Documentation your team keeps after I leave"
+      ],
+      "duration": "Ongoing, 2–3 days a week",
+      "featured": false
+    },
+    {
+      "code": "S-03",
+      "title": "Greenfield build",
+      "summary": "TODO — from empty repository to production. Best for teams who need a solid foundation laid quickly and correctly.",
+      "deliverables": [
+        "Production system, deployed",
+        "CI/CD and monitoring set up",
+        "Handover documentation and a working session"
+      ],
+      "duration": "4–12 weeks",
+      "featured": false
+    },
+    {
+      "code": "S-04",
+      "title": "Technical advisory",
+      "summary": "TODO — a recurring call for founders and teams who need a senior engineer to think out loud with before making expensive decisions.",
+      "deliverables": [
+        "Scheduled calls, monthly or fortnightly",
+        "Written recommendations after each session",
+        "Async questions answered between calls"
+      ],
+      "duration": "Monthly retainer",
+      "featured": false
+    }
+  ]
+}

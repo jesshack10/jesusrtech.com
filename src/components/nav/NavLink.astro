@@ -5,20 +5,29 @@ interface Props {
 }
 
 const { href, mobile = false } = Astro.props;
-const isActive = Astro.url.pathname === href || Astro.url.pathname.startsWith(href + '/');
+
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const target = href.replace(/\/+$/, '') || '/';
+const isActive = target === '/' ? path === '/' : path === target || path.startsWith(target + '/');
 ---
 
 <a
   href={href}
+  aria-current={isActive ? 'page' : undefined}
   class:list={[
-    'transition-colors font-medium text-sm',
-    mobile
-      ? 'block px-3 py-2 rounded-md'
-      : 'px-3 py-1.5 rounded-md',
-    isActive
-      ? 'text-green bg-green/10'
-      : 'text-secondary hover:text-foreground hover:bg-elevated',
+    'relative text-sm font-medium transition-colors',
+    mobile ? 'block px-3 py-2.5' : 'px-3 py-2',
+    isActive ? 'text-foreground' : 'text-secondary hover:text-foreground',
   ]}
 >
   <slot />
+  {isActive && (
+    <span
+      aria-hidden="true"
+      class:list={[
+        'absolute bg-accent',
+        mobile ? 'left-0 top-1/2 h-4 w-0.5 -translate-y-1/2' : 'inset-x-3 -bottom-px h-px',
+      ]}
+    ></span>
+  )}
 </a>

@@ -1,59 +1,107 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import Tag from '../ui/Tag.astro';
 
 interface Props {
   project: CollectionEntry<'projects'>;
+  /** Index within a grid, used to stagger the reveal. */
+  index?: number;
 }
 
-const { project } = Astro.props;
-const { title, description, tags, status, repoUrl, liveUrl } = project.data;
+const { project, index = 0 } = Astro.props;
+const {
+  title, description, tags, status, repoUrl, liveUrl,
+  role, client, confidential, year, outcome, metrics,
+} = project.data;
 
-const statusColors = {
-  active:    'green',
-  completed: 'blue',
-  archived:  'neutral',
+const statusVariant = {
+  active:    'text-[var(--ok)]',
+  completed: 'text-secondary',
+  archived:  'text-muted',
 } as const;
+
+/* Under NDA we show the shape of the work and drop anything identifying. */
+const clientLabel = confidential ? 'Confidential client' : client;
+const showLinks = !confidential && (repoUrl || liveUrl);
 ---
 
-<article class="group flex flex-col bg-surface border border-border rounded-xl p-5 hover:border-green/50 transition-colors">
-  <div class="flex items-start justify-between gap-2 mb-3">
-    <a href={`/projects/${project.id}`} class="flex-1">
-      <h3 class="font-semibold text-foreground group-hover:text-green transition-colors leading-snug">
-        {title}
-      </h3>
-    </a>
-    <Tag variant={statusColors[status]}>{status}</Tag>
+<article
+  class="bp-ticks group relative flex flex-col border border-border bg-surface/40 p-6
+         transition-colors duration-200 hover:border-accent/40 hover:bg-surface"
+  data-reveal
+  style={`--reveal-delay: ${index * 70}ms`}
+>
+  <!-- Header strip: the drawing's identifying marks -->
+  <div class="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1">
+    {year && <span class="bp-label">{year}</span>}
+    {clientLabel && (
+      <>
+        <span aria-hidden="true" class="h-3 w-px bg-border"></span>
+        <span class="bp-label">{clientLabel}</span>
+      </>
+    )}
+    <span class:list={['bp-label ml-auto', statusVariant[status]]}>{status}</span>
   </div>
 
-  <p class="text-sm text-secondary leading-relaxed mb-4 flex-1">{description}</p>
-
-  <div class="flex flex-wrap gap-1.5 mb-4">
-    {tags.map((tag) => <Tag variant="neutral">{tag}</Tag>)}
-  </div>
-
-  <div class="flex gap-3 mt-auto">
-    {repoUrl && (
-      <a href={repoUrl} target="_blank" rel="noopener noreferrer"
-         class="text-xs text-muted hover:text-foreground transition-colors flex items-center gap-1">
-        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-        </svg>
-        Code
-      </a>
-    )}
-    {liveUrl && (
-      <a href={liveUrl} target="_blank" rel="noopener noreferrer"
-         class="text-xs text-muted hover:text-foreground transition-colors flex items-center gap-1">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-        </svg>
-        Live
-      </a>
-    )}
-    <a href={`/projects/${project.id}`}
-       class="text-xs text-muted hover:text-foreground transition-colors ml-auto">
-      Details →
+  <h3 class="text-lg font-semibold leading-snug tracking-tight text-foreground">
+    <a href={`/projects/${project.id}`} class="after:absolute after:inset-0 hover:text-accent transition-colors">
+      {title}
     </a>
+  </h3>
+
+  {role && <p class="mt-1 text-[13px] text-muted">{role}</p>}
+
+  <p class="mt-3 text-sm leading-relaxed text-secondary text-pretty">
+    {outcome || description}
+  </p>
+
+  {metrics.length > 0 && (
+    <dl class="mt-5 grid gap-4 border-t border-line pt-4" style={`grid-template-columns: repeat(${metrics.length}, minmax(0, 1fr))`}>
+      {metrics.map((metric) => (
+        <div>
+          <dt class="bp-label">{metric.label}</dt>
+          <dd class="mt-1.5 font-mono text-xl font-medium tracking-tight text-accent">
+            {metric.value}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  )}
+
+  <div class="mt-auto pt-5">
+    {tags.length > 0 && (
+      <ul class="flex flex-wrap gap-1.5">
+        {tags.slice(0, 5).map((tag) => (
+          <li class="rounded-[2px] border border-border px-1.5 py-0.5 font-mono text-[11px] leading-none text-muted">
+            {tag}
+          </li>
+        ))}
+      </ul>
+    )}
+
+    {showLinks && (
+      <!-- relative + z-10 keeps these clickable above the card-wide title link -->
+      <div class="relative z-10 mt-4 flex gap-4 border-t border-line pt-4">
+        {repoUrl && (
+          <a
+            href={repoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bp-label transition-colors hover:text-accent"
+          >
+            Source ↗
+          </a>
+        )}
+        {liveUrl && (
+          <a
+            href={liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bp-label transition-colors hover:text-accent"
+          >
+            Live ↗
+          </a>
+        )}
+      </div>
+    )}
   </div>
 </article>

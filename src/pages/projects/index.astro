@@ -17,14 +17,22 @@ const projects = (await getCollection('projects'))
   title="Projects — jesusrtech"
   description="A selection of projects I've built or contributed to."
 >
-  <div class="max-w-5xl mx-auto px-6 py-16">
-    <SectionHeading label="Work">Projects</SectionHeading>
+  <div class="mx-auto max-w-6xl px-6 py-16">
+    <SectionHeading
+      index="//"
+      label="Work"
+      lede="Case studies from client and personal work. Each one leads with what changed as a result."
+    >
+      Projects
+    </SectionHeading>
 
     {projects.length === 0 ? (
-      <p class="text-secondary">No projects yet.</p>
+      <p class="border border-dashed border-border p-8 text-center text-sm text-muted">
+        No projects yet.
+      </p>
     ) : (
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {projects.map((project) => <ProjectCard project={project} />)}
+      <div class="grid gap-3 sm:grid-cols-2">
+        {projects.map((project, i) => <ProjectCard project={project} index={i} />)}
       </div>
     )}
   </div>

@@ -2,21 +2,62 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import SectionHeading from '../components/ui/SectionHeading.astro';
 import SocialLinks from '../components/contact/SocialLinks.astro';
-import cv from '../data/cv.json';
+import AvailabilityBadge from '../components/ui/AvailabilityBadge.astro';
+import Button from '../components/ui/Button.astro';
+import site from '../data/site.json';
+import { primaryCta, hasBooking } from '../utils/cta';
+
+const cta = primaryCta();
 ---
 
 <PageLayout
   title="Contact — jesusrtech"
-  description="Get in touch with me via email or social networks."
+  description="Book a call or reach out about a project."
 >
-  <div class="max-w-xl mx-auto px-6 py-16">
-    <SectionHeading label="Get in touch">Contact</SectionHeading>
+  <div class="mx-auto max-w-3xl px-6 py-16">
+    <SectionHeading
+      index="//"
+      label="Contact"
+      lede="The fastest path is a short call — fifteen minutes is usually enough to tell whether it's a fit."
+    >
+      Let's talk
+    </SectionHeading>
 
-    <p class="text-secondary leading-relaxed mb-10">
-      I'm always open to interesting conversations, project collaborations, or just saying hi.
-      The best way to reach me is via email or LinkedIn.
-    </p>
+    <div data-reveal>
+      <AvailabilityBadge />
+    </div>
 
-    <SocialLinks socials={cv.socials} email={cv.email} />
+    <div class="mt-8 flex flex-wrap gap-3" data-reveal style="--reveal-delay: 80ms">
+      <Button href={cta.href} external={cta.external} variant="primary">
+        {cta.label}
+        <span aria-hidden="true" class="transition-transform duration-150 group-hover/btn:translate-x-0.5">→</span>
+      </Button>
+      {hasBooking() && (
+        <Button href={`mailto:${site.email}`} variant="secondary">Email instead</Button>
+      )}
+    </div>
+
+    <div class="mt-14">
+      <p class="bp-label mb-4">Elsewhere</p>
+      <SocialLinks />
+    </div>
+
+    <div class="mt-14 border border-border p-6" data-reveal>
+      <p class="bp-label mb-3">What helps in a first message</p>
+      <ul class="space-y-2 text-sm leading-relaxed text-secondary">
+        <li class="flex gap-2.5">
+          <span aria-hidden="true" class="mt-[9px] h-px w-2.5 shrink-0 bg-accent"></span>
+          <span>What you're building, and what's currently in the way.</span>
+        </li>
+        <li class="flex gap-2.5">
+          <span aria-hidden="true" class="mt-[9px] h-px w-2.5 shrink-0 bg-accent"></span>
+          <span>Rough timeline, and whether there's a hard deadline behind it.</span>
+        </li>
+        <li class="flex gap-2.5">
+          <span aria-hidden="true" class="mt-[9px] h-px w-2.5 shrink-0 bg-accent"></span>
+          <span>Who else is on the team, and what they own.</span>
+        </li>
+      </ul>
+    </div>
   </div>
 </PageLayout>

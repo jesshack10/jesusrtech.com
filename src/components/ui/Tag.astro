@@ -1,18 +1,25 @@
 ---
 interface Props {
-  variant?: 'green' | 'blue' | 'yellow' | 'neutral';
+  variant?: 'accent' | 'ok' | 'info' | 'neutral';
+  mono?: boolean;
 }
 
-const { variant = 'neutral' } = Astro.props;
+const { variant = 'neutral', mono = true } = Astro.props;
 
 const variants = {
-  green:   'bg-green/10 text-green border-green/20',
-  blue:    'bg-blue/10 text-blue border-blue/20',
-  yellow:  'bg-yellow/10 text-yellow border-yellow/20',
-  neutral: 'bg-elevated text-secondary border-border',
+  accent:  'border-accent/35 text-accent bg-accent/8',
+  ok:      'border-[var(--ok)]/35 text-[var(--ok)] bg-[var(--ok)]/8',
+  info:    'border-[var(--info)]/35 text-[var(--info)] bg-[var(--info)]/8',
+  neutral: 'border-border text-secondary bg-transparent',
 };
 ---
 
-<span class:list={['inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium border', variants[variant]]}>
+<span
+  class:list={[
+    'inline-flex items-center rounded-[2px] border px-1.5 py-0.5 text-[11px] leading-none',
+    mono && 'font-mono tracking-wide',
+    variants[variant],
+  ]}
+>
   <slot />
 </span>

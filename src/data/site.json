@@ -1,0 +1,62 @@
+{
+  "_readme": "Identity and contact details for the whole site. Every value marked TODO is a placeholder — replace it before this goes live. Nothing here is invented from real data.",
+
+  "name": "Jesus Rodriguez",
+  "shortName": "Jesus",
+  "brand": "jesusrtech",
+
+  "role": "TODO — your title, e.g. 'Senior Backend Engineer'",
+  "positioning": "TODO — the one line that sells you. Name the problem you solve and who for. Example: 'I make slow Rails applications fast for Series-A teams.' Avoid 'passionate software engineer'.",
+  "bio": "TODO — two or three sentences. What you do, who you do it for, what a client walks away with.",
+
+  "location": "TODO — City, Country",
+  "timezone": "TODO — e.g. UTC-6",
+  "remote": true,
+
+  "email": "hello@jesusrtech.com",
+
+  "booking": {
+    "url": "",
+    "label": "Book a 30-min call",
+    "note": "TODO — paste your Cal.com or Calendly URL. While this is empty the site falls back to the email CTA automatically, so nothing breaks."
+  },
+
+  "availability": {
+    "status": "open",
+    "_statusOptions": ["open", "limited", "closed"],
+    "message": "TODO — e.g. 'Taking on new projects from March 2026'"
+  },
+
+  "socials": [
+    {
+      "key": "github",
+      "name": "GitHub",
+      "url": "https://github.com/jesshack10",
+      "handle": "@jesshack10",
+      "blurb": "Source, experiments, and the odd weekend build."
+    },
+    {
+      "key": "linkedin",
+      "name": "LinkedIn",
+      "url": "TODO",
+      "handle": "TODO",
+      "blurb": "Work history and the professional side of things."
+    },
+    {
+      "key": "youtube",
+      "name": "YouTube",
+      "url": "TODO",
+      "handle": "TODO",
+      "blurb": "Walkthroughs, deep dives, and build logs."
+    },
+    {
+      "key": "x",
+      "name": "X",
+      "url": "TODO",
+      "handle": "TODO",
+      "blurb": "Short notes on what I'm building."
+    }
+  ],
+
+  "cvPdf": ""
+}

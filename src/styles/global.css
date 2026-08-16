@@ -6,75 +6,216 @@
 
 /* ── Design tokens ─────────────────────────────────────────── */
 @theme {
-  --color-green:      var(--accent-green);
-  --color-blue:       var(--accent-blue);
-  --color-yellow:     var(--accent-yellow);
-  --color-base:       var(--bg-base);
-  --color-surface:    var(--bg-surface);
-  --color-elevated:   var(--bg-elevated);
-  --color-border:     var(--border);
-  --color-foreground: var(--text-primary);
-  --color-secondary:  var(--text-secondary);
-  --color-muted:      var(--text-muted);
+  --color-accent:      var(--accent);
+  --color-accent-hi:   var(--accent-hi);
+  --color-accent-ink:  var(--accent-ink);
+  --color-ok:          var(--ok);
+  --color-info:        var(--info);
 
-  --font-family-sans: Inter, system-ui, -apple-system, sans-serif;
-  --font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --color-base:        var(--bg-base);
+  --color-surface:     var(--bg-surface);
+  --color-elevated:    var(--bg-elevated);
+  --color-border:      var(--border);
+  --color-line:        var(--line);
+
+  --color-foreground:  var(--text-primary);
+  --color-secondary:   var(--text-secondary);
+  --color-muted:       var(--text-muted);
+
+  --font-sans: Inter, system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
-/* ── Light theme ───────────────────────────────────────────── */
+/* ── Light theme — drafting paper ──────────────────────────── */
 :root {
-  --accent-green:  #4a7c59;
-  --accent-blue:   #3d6fa8;
-  --accent-yellow: #9a7d2e;
+  --accent:     #b45309;  /* amber-700 — 5.6:1 on base, safe for text */
+  --accent-hi:  #92400e;  /* hover / pressed */
+  --accent-ink: #ffffff;  /* text on an accent fill */
 
-  --bg-base:     #f5f5f3;
-  --bg-surface:  #ebebea;
-  --bg-elevated: #e2e2e0;
-  --border:      #d1d1cf;
+  --ok:   #15803d;
+  --info: #1d4ed8;
 
-  --text-primary:   #1a1a18;
-  --text-secondary: #6b6b68;
-  --text-muted:     #9a9a96;
+  --bg-base:     #fbfbfc;
+  --bg-surface:  #f4f5f7;
+  --bg-elevated: #eceef1;
+  --border:      #d5dae1;
+  --line:        #e3e7ec;  /* hairlines + grid, quieter than border */
+
+  --text-primary:   #14171a;
+  --text-secondary: #565f6b;
+  --text-muted:     #8b95a1;
 }
 
-/* ── Dark theme ────────────────────────────────────────────── */
+/* ── Dark theme — backlit console ──────────────────────────── */
 .dark {
-  --accent-green:  #6aab7e;
-  --accent-blue:   #6a9fd4;
-  --accent-yellow: #d4aa4a;
+  --accent:     #f59e0b;  /* amber-500 — 9:1 on base */
+  --accent-hi:  #fbbf24;
+  --accent-ink: #0b0d10;
 
-  --bg-base:     #111110;
-  --bg-surface:  #1c1c1b;
-  --bg-elevated: #252523;
-  --border:      #2e2e2c;
+  --ok:   #4ade80;
+  --info: #7ea9ff;
 
-  --text-primary:   #e8e8e5;
-  --text-secondary: #8a8a86;
-  --text-muted:     #5a5a57;
+  --bg-base:     #0b0d10;
+  --bg-surface:  #121519;
+  --bg-elevated: #191d23;
+  --border:      #2b313a;
+  --line:        #21262d;
+
+  --text-primary:   #e6e9ed;
+  --text-secondary: #98a2b0;
+  --text-muted:     #646d7a;
 }
 
-/* ── Base resets ───────────────────────────────────────────── */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+/* ── Base ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
+  /* keeps sticky-nav anchor jumps from hiding headings */
+  scroll-padding-top: 5rem;
 }
 
 body {
   background-color: var(--bg-base);
   color: var(--text-primary);
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background-color: var(--accent-green);
-  color: var(--bg-base);
+  background-color: var(--accent);
+  color: var(--accent-ink);
 }
 
-::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg-surface); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ── Blueprint language ────────────────────────────────────── */
+
+/* Faint engineering grid. Sits behind content, never over it. */
+.bp-grid {
+  background-image:
+    linear-gradient(to right,  var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Fades the grid out toward the edges so it reads as a drawing
+   surface rather than graph paper. */
+.bp-grid-fade {
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 100%);
+          mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 100%);
+}
+
+/* Monospace metadata label — the annotation voice of the design. */
+.bp-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Corner ticks — like registration marks on a technical drawing. */
+.bp-ticks { position: relative; }
+.bp-ticks::before,
+.bp-ticks::after {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-color: var(--accent);
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+}
+.bp-ticks::before {
+  top: -1px; left: -1px;
+  border-top: 1px solid; border-left: 1px solid;
+}
+.bp-ticks::after {
+  bottom: -1px; right: -1px;
+  border-bottom: 1px solid; border-right: 1px solid;
+}
+.bp-ticks:hover::before,
+.bp-ticks:hover::after,
+.bp-ticks:focus-within::before,
+.bp-ticks:focus-within::after { opacity: 1; }
+
+/* ── Motion ────────────────────────────────────────────────── */
+
+/* Cross-document view transitions. Native CSS, so page-to-page
+   navigation cross-fades with zero JavaScript shipped. Browsers
+   without support simply navigate normally. */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 180ms;
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity   600ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Anything that never got observed (no JS, or the observer failed)
+   must still be readable — this is the fallback, not the default. */
+.no-js [data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Prose ─────────────────────────────────────────────────── */
+.prose {
+  --tw-prose-body:            var(--text-secondary);
+  --tw-prose-headings:        var(--text-primary);
+  --tw-prose-links:           var(--accent);
+  --tw-prose-bold:            var(--text-primary);
+  --tw-prose-code:            var(--accent);
+  --tw-prose-quotes:          var(--text-secondary);
+  --tw-prose-quote-borders:   var(--accent);
+  --tw-prose-hr:              var(--border);
+  --tw-prose-bullets:         var(--border);
+  --tw-prose-counters:        var(--text-muted);
+  --tw-prose-pre-bg:          var(--bg-surface);
+  --tw-prose-pre-code:        var(--text-primary);
+  --tw-prose-th-borders:      var(--border);
+  --tw-prose-td-borders:      var(--line);
+}

@@ -1,60 +1,72 @@
 ---
 import NavLink from './NavLink.astro';
 import ThemeToggle from '../ui/ThemeToggle.astro';
+import Button from '../ui/Button.astro';
+import site from '../../data/site.json';
+import { primaryCta } from '../../utils/cta';
 
 const navLinks = [
-  { href: '/projects', label: 'Projects' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/cv', label: 'CV' },
-  { href: '/uses', label: 'Uses' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/projects', label: 'Work' },
+  { href: '/videos',   label: 'Videos' },
+  { href: '/blog',     label: 'Writing' },
+  { href: '/cv',       label: 'CV' },
+  { href: '/uses',     label: 'Uses' },
 ];
+
+const cta = primaryCta();
 ---
 
-<header class="sticky top-0 z-50 bg-surface/80 backdrop-blur-md border-b border-border">
-  <nav class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="/" class="text-foreground font-semibold tracking-tight hover:text-green transition-colors">
-      jesusrtech
+<header class="sticky top-0 z-50 border-b border-line bg-base/85 backdrop-blur-md">
+  <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-6" aria-label="Main">
+    <a
+      href="/"
+      class="group flex items-baseline gap-1.5 font-mono text-sm tracking-tight text-foreground"
+    >
+      <span class="text-accent transition-opacity group-hover:opacity-70">/</span>
+      <span class="font-medium">{site.brand}</span>
     </a>
 
-    <!-- Desktop nav -->
-    <ul class="hidden md:flex items-center gap-1">
+    <ul class="hidden items-center md:flex">
       {navLinks.map((link) => (
-        <li>
-          <NavLink href={link.href}>{link.label}</NavLink>
-        </li>
+        <li><NavLink href={link.href}>{link.label}</NavLink></li>
       ))}
     </ul>
 
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-2">
       <ThemeToggle />
 
-      <!-- Mobile hamburger -->
+      <Button href={cta.href} external={cta.external} variant="primary" size="sm" class="hidden sm:inline-flex">
+        {cta.label}
+      </Button>
+
       <button
         id="mobile-menu-btn"
-        class="md:hidden p-2 rounded-md text-secondary hover:text-foreground hover:bg-elevated transition-colors"
+        class="rounded-[3px] p-2 text-secondary transition-colors hover:bg-elevated hover:text-foreground md:hidden"
         aria-label="Toggle menu"
         aria-expanded="false"
+        aria-controls="mobile-menu"
       >
-        <svg id="icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <svg id="icon-open" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-width="1.75" d="M4 7h16M4 12h16M4 17h16" />
         </svg>
-        <svg id="icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        <svg id="icon-close" class="hidden h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
   </nav>
 
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden border-t border-border bg-surface">
-    <ul class="max-w-5xl mx-auto px-6 py-4 flex flex-col gap-1">
+  <div id="mobile-menu" class="hidden border-t border-line bg-base md:hidden">
+    <ul class="mx-auto max-w-6xl px-6 py-3">
       {navLinks.map((link) => (
-        <li>
-          <NavLink href={link.href} mobile>{link.label}</NavLink>
-        </li>
+        <li><NavLink href={link.href} mobile>{link.label}</NavLink></li>
       ))}
     </ul>
+    <div class="mx-auto max-w-6xl border-t border-line px-6 py-4 sm:hidden">
+      <Button href={cta.href} external={cta.external} variant="primary" class="w-full">
+        {cta.label}
+      </Button>
+    </div>
   </div>
 </header>
 
@@ -64,11 +76,22 @@ const navLinks = [
   const iconOpen = document.getElementById('icon-open');
   const iconClose = document.getElementById('icon-close');
 
+  function setOpen(open: boolean) {
+    menu?.classList.toggle('hidden', !open);
+    iconOpen?.classList.toggle('hidden', open);
+    iconClose?.classList.toggle('hidden', !open);
+    btn?.setAttribute('aria-expanded', String(open));
+  }
+
   btn?.addEventListener('click', () => {
-    const isOpen = !menu?.classList.contains('hidden');
-    menu?.classList.toggle('hidden', isOpen);
-    iconOpen?.classList.toggle('hidden', !isOpen);
-    iconClose?.classList.toggle('hidden', isOpen);
-    btn.setAttribute('aria-expanded', String(!isOpen));
+    setOpen(menu?.classList.contains('hidden') ?? false);
+  });
+
+  // Escape closes the menu and returns focus to the control that opened it.
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !menu?.classList.contains('hidden')) {
+      setOpen(false);
+      btn?.focus();
+    }
   });
 </script>

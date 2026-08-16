@@ -12,6 +12,7 @@ twice.
 - **[Tailwind CSS v4](https://tailwindcss.com)** — CSS-first config via the Vite plugin
 - **MDX** — blog posts and project case studies as markdown files
 - **JSON** — identity, services, and videos as plain data files
+- **GitHub Pages** — deployed automatically on every push to `main`
 
 ## Pages
 
@@ -162,10 +163,13 @@ pnpm build      # builds to dist/
 pnpm preview    # previews the production build locally
 ```
 
-> **Note:** this repository currently contains both a GitHub Pages workflow
-> (`.github/workflows/`) and a `public/CNAME`, while earlier documentation claimed
-> Vercel. Confirm which one actually serves jesusrtech.com and remove the other —
-> two deploy paths for one domain will eventually fight.
+**Deployed on GitHub Pages.** Every push to `main` triggers
+`.github/workflows/deploy.yml`, which builds the site and publishes `dist/` to
+Pages. The custom domain is held by `public/CNAME` — keep that file, or the domain
+detaches on the next deploy.
+
+Not Vercel: attaching a custom domain there requires a paid plan. Earlier
+documentation claiming Vercel was wrong.
 
 ## Project structure
 

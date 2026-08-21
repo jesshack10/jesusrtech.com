@@ -1,32 +1,29 @@
 {
   "_readme": "Identity and contact details for the whole site. Every value marked TODO is a placeholder — replace it before this goes live. Nothing here is invented from real data.",
-
   "name": "Jesús Ramírez",
   "shortName": "Jesús",
   "brand": "jesusrtech",
-
   "role": "TODO — your title, e.g. 'Senior Backend Engineer'",
   "positioning": "TODO — the one line that sells you. Name the problem you solve and who for. Example: 'I make slow Rails applications fast for Series-A teams.' Avoid 'passionate software engineer'.",
   "bio": "TODO — two or three sentences. What you do, who you do it for, what a client walks away with.",
-
   "location": "TODO — City, Country",
   "timezone": "TODO — e.g. UTC-6",
   "remote": true,
-
   "email": "hello@jesusrtech.com",
-
   "booking": {
     "url": "",
     "label": "Book a 30-min call",
     "note": "TODO — paste your Cal.com or Calendly URL. While this is empty the site falls back to the email CTA automatically, so nothing breaks."
   },
-
   "availability": {
     "status": "open",
-    "_statusOptions": ["open", "limited", "closed"],
+    "_statusOptions": [
+      "open",
+      "limited",
+      "closed"
+    ],
     "message": "TODO — e.g. 'Taking on new projects from March 2026'"
   },
-
   "socials": [
     {
       "key": "github",
@@ -57,6 +54,44 @@
       "blurb": "Short notes on what I'm building."
     }
   ],
-
-  "cvPdf": ""
+  "cvPdf": "",
+  "stack": [
+    {
+      "category": "Languages",
+      "items": [
+        "TypeScript",
+        "JavaScript",
+        "Python",
+        "SQL"
+      ]
+    },
+    {
+      "category": "Frontend",
+      "items": [
+        "React",
+        "Astro",
+        "Tailwind CSS",
+        "Next.js"
+      ]
+    },
+    {
+      "category": "Backend",
+      "items": [
+        "Node.js",
+        "FastAPI",
+        "PostgreSQL",
+        "Redis"
+      ]
+    },
+    {
+      "category": "DevOps",
+      "items": [
+        "Docker",
+        "GitHub Actions",
+        "Vercel",
+        "AWS"
+      ]
+    }
+  ],
+  "_stackNote": "Skill groups shown in the hero spec panel and on the CV. Structured data, so it stays here rather than becoming a note."
 }

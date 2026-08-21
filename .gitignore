@@ -7,3 +7,11 @@ node_modules/
 Thumbs.db
 *.local
 .astro/
+
+# Obsidian — per-machine UI state, not shared config
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.obsidian/plugins/
+.obsidian/themes/
+.trash/

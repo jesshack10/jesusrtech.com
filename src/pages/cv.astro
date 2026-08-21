@@ -1,82 +1,102 @@
 ---
+import { getCollection } from 'astro:content';
 import PageLayout from '../layouts/PageLayout.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
 import CVSection from '../components/cv/CVSection.astro';
 import CVEntry from '../components/cv/CVEntry.astro';
 import SkillPills from '../components/cv/SkillPills.astro';
 import Button from '../components/ui/Button.astro';
-import cv from '../data/cv.json';
 import site from '../data/site.json';
+
+/* CV entries are Obsidian notes under src/content/cv/. Only the frontmatter
+   is published — each note's body stays private working context. */
+const entries = (await getCollection('cv')).filter((e) => e.data.publish);
+
+/* `start` is "YYYY" or "YYYY-MM"; string compare sorts both correctly. */
+const byRecent = (a, b) => b.data.start.localeCompare(a.data.start);
+
+const experience     = entries.filter((e) => e.data.kind === 'experience').sort(byRecent);
+const education      = entries.filter((e) => e.data.kind === 'education').sort(byRecent);
+const certifications = entries.filter((e) => e.data.kind === 'certification').sort(byRecent);
+
+/** "2023-01" → "Jan 2023"; a missing end date reads as Present. */
+function formatPeriod(start: string, end?: string) {
+  const label = (value?: string) => {
+    if (!value) return 'Present';
+    const [year, month] = value.split('-');
+    if (!month) return year;
+    const date = new Date(Number(year), Number(month) - 1);
+    return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  };
+  return `${label(start)} – ${label(end)}`;
+}
 ---
 
 <PageLayout
-  title={`CV — ${cv.name}`}
-  description={`Resume and professional background of ${cv.name}, ${cv.title}.`}
+  title={`CV — ${site.name}`}
+  description={`Resume and professional background of ${site.name}.`}
 >
-  <div class="max-w-3xl mx-auto px-6 py-16">
-    <!-- Header -->
-    <div class="mb-16 pb-10 border-b border-border flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
-      <div>
-        <h1 class="text-3xl font-bold text-foreground mb-1">{cv.name}</h1>
-        <p class="text-secondary">{cv.title} · {cv.location}</p>
-      </div>
-      {/* Only rendered once a real PDF exists — set `cvPdf` in site.json.
-          A download button pointing at a missing file is worse than none. */}
+  <div class="mx-auto max-w-3xl px-6 py-16">
+    <div class="mb-14 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+      <SectionHeading index="//" label="Curriculum" class="mb-0 flex-1">
+        {site.name}
+      </SectionHeading>
+
       {site.cvPdf && (
-        <Button href={site.cvPdf} variant="secondary" external>
+        <Button href={site.cvPdf} variant="secondary" size="sm" external>
           Download PDF
         </Button>
       )}
     </div>
 
-    <!-- Summary -->
-    <CVSection title="Summary">
-      <p class="text-secondary leading-relaxed">{cv.summary}</p>
-    </CVSection>
+    <p class="mb-14 max-w-2xl leading-relaxed text-secondary text-pretty">
+      {site.bio}
+    </p>
 
-    <!-- Experience -->
-    <CVSection title="Experience">
-      {cv.experience.map((entry) => (
-        <CVEntry
-          role={entry.role}
-          company={entry.company}
-          companyUrl={entry.companyUrl}
-          period={entry.period}
-          location={entry.location}
-          bullets={entry.bullets}
-        />
-      ))}
-    </CVSection>
+    {experience.length > 0 && (
+      <CVSection title="Experience">
+        {experience.map((entry) => (
+          <CVEntry
+            role={entry.data.title}
+            company={entry.data.org}
+            companyUrl={entry.data.orgUrl}
+            period={formatPeriod(entry.data.start, entry.data.end)}
+            location={entry.data.location ?? ''}
+            bullets={entry.data.highlights}
+          />
+        ))}
+      </CVSection>
+    )}
 
-    <!-- Education -->
-    <CVSection title="Education">
-      {cv.education.map((edu) => (
-        <div class="mb-4 last:mb-0 grid sm:grid-cols-[1fr_auto] gap-x-4">
-          <div>
-            <h3 class="font-semibold text-foreground">{edu.degree}</h3>
-            <p class="text-sm text-secondary">{edu.school}</p>
+    {education.length > 0 && (
+      <CVSection title="Education">
+        {education.map((entry) => (
+          <div class="mb-4 grid gap-x-4 last:mb-0 sm:grid-cols-[1fr_auto]">
+            <div>
+              <h3 class="font-semibold text-foreground">{entry.data.title}</h3>
+              <p class="text-sm text-secondary">{entry.data.org}</p>
+            </div>
+            <div class="mt-0.5 shrink-0 text-right">
+              <p class="bp-label">{formatPeriod(entry.data.start, entry.data.end)}</p>
+              {entry.data.location && <p class="bp-label mt-1">{entry.data.location}</p>}
+            </div>
           </div>
-          <div class="text-right mt-0.5 shrink-0">
-            <p class="text-xs text-muted">{edu.period}</p>
-            <p class="text-xs text-muted">{edu.location}</p>
-          </div>
-        </div>
-      ))}
-    </CVSection>
+        ))}
+      </CVSection>
+    )}
 
-    <!-- Skills -->
     <CVSection title="Skills">
-      {cv.skills.map((skillGroup) => (
-        <SkillPills category={skillGroup.category} items={skillGroup.items} />
+      {site.stack.map((group) => (
+        <SkillPills category={group.category} items={group.items} />
       ))}
     </CVSection>
 
-    <!-- Certifications -->
-    {cv.certifications.length > 0 && (
+    {certifications.length > 0 && (
       <CVSection title="Certifications">
-        {cv.certifications.map((cert) => (
-          <div class="flex justify-between items-baseline mb-3 last:mb-0">
-            <span class="text-foreground text-sm font-medium">{cert.name}</span>
-            <span class="text-muted text-xs">{cert.issuer} · {cert.year}</span>
+        {certifications.map((entry) => (
+          <div class="mb-3 flex items-baseline justify-between gap-4 last:mb-0">
+            <span class="text-sm font-medium text-foreground">{entry.data.title}</span>
+            <span class="bp-label shrink-0">{entry.data.org} · {entry.data.start}</span>
           </div>
         ))}
       </CVSection>

@@ -202,6 +202,58 @@ body {
   }
 }
 
+
+/* ── Obsidian syntax ───────────────────────────────────────── */
+
+/* ==highlight== */
+mark {
+  background-color: color-mix(in srgb, var(--accent) 22%, transparent);
+  color: inherit;
+  padding: 0.05em 0.25em;
+  border-radius: 2px;
+}
+
+/* A wikilink whose target has no public page. The words survive; the link
+   does not, so an unpublished note never becomes a 404. */
+.wikilink-unresolved {
+  font-weight: inherit;
+  color: var(--text-secondary);
+  border-bottom: 1px dotted var(--border);
+}
+
+/* > [!note] callouts */
+.callout {
+  --callout-color: var(--info);
+  margin: 1.5rem 0;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--callout-color);
+  border-radius: 3px;
+  background-color: color-mix(in srgb, var(--callout-color) 6%, transparent);
+}
+
+.callout > :first-child { margin-top: 0; }
+.callout > :last-child  { margin-bottom: 0; }
+
+.callout .callout-title {
+  margin-bottom: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--callout-color);
+}
+
+.callout-warning,
+.callout-caution  { --callout-color: var(--accent); }
+.callout-danger,
+.callout-error    { --callout-color: #e5484d; }
+.callout-success,
+.callout-tip      { --callout-color: var(--ok); }
+.callout-quote,
+.callout-todo     { --callout-color: var(--text-muted); }
+
 /* ── Prose ─────────────────────────────────────────────────── */
 .prose {
   --tw-prose-body:            var(--text-secondary);

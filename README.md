@@ -10,7 +10,8 @@ twice.
 
 - **[Astro v6](https://astro.build)** — static site generator, near-zero JS
 - **[Tailwind CSS v4](https://tailwindcss.com)** — CSS-first config via the Vite plugin
-- **MDX** — blog posts and project case studies as markdown files
+- **Obsidian** — the repo is a vault; notes are the source of truth
+- **Markdown / MDX** — articles, case studies, CV entries, decisions
 - **JSON** — identity, services, and videos as plain data files
 - **GitHub Pages** — deployed automatically on every push to `main`
 
@@ -22,9 +23,10 @@ twice.
 | `/projects` | Case-study grid + individual project pages |
 | `/videos` | Talks, walkthroughs, and streams |
 | `/blog` | Post list + individual post pages |
-| `/cv` | Full resume driven by `src/data/cv.json` |
+| `/cv` | Resume, built from the notes in `src/content/cv/` |
 | `/contact` | Booking link, social presence, email |
 | `/uses` | Tools and gear driven by `src/data/uses.json` |
+| `/decisions` | Decision log — only notes marked `publish: true` |
 
 ## Getting started
 
@@ -34,6 +36,88 @@ pnpm dev
 ```
 
 The dev server starts at `http://localhost:4321`.
+
+
+## The vault
+
+**This repository is an Obsidian vault.** Open the repo folder in Obsidian and
+everything — CV entries, articles, project case studies, decisions, events —
+is a note you can edit, link, and search. The site is only a renderer; the
+notes are the source of truth. There is no database and never needs to be.
+
+```
+open Obsidian → edit a note → commit → push → live in ~60s
+```
+
+### What lives where
+
+| Folder | Collection | Public? |
+|---|---|---|
+| `src/content/blog/` | Articles | Yes, unless `draft: true` |
+| `src/content/projects/` | Case studies | Yes |
+| `src/content/cv/` | One note per role, degree, certification | Frontmatter only |
+| `src/content/decisions/` | Why things are the way they are | **Only if `publish: true`** |
+| `src/content/events/` | Milestones worth remembering | Private (no page yet) |
+| `public/attachments/` | Images you paste into notes | Served at `/attachments/…` |
+| `_templates/` | Obsidian note templates | Never published |
+
+`decisions` and `events` default to `publish: false`, so a half-finished
+thought can never leak onto the site. Publishing is always deliberate.
+
+### CV notes are half-public by design
+
+Only a CV note's **frontmatter** is rendered — `title`, `org`, dates, and
+`highlights`. The body below is yours: context, evidence, links, interview
+prep. Write freely there; none of it is published.
+
+### Obsidian syntax that works on the site
+
+A `remark` plugin (`src/plugins/remark-obsidian.mjs`) teaches the build
+Obsidian's dialect, so notes render correctly without being rewritten:
+
+| You write | You get |
+|---|---|
+| `[[Note]]`, `[[Note\|Alias]]` | A link to that note's page |
+| `[[Note#Heading]]` | A link to that heading |
+| `![[diagram.png]]` | The image, from `public/attachments/` |
+| `==important==` | A highlight |
+| `> [!warning] Title` | A callout box |
+
+> [!note] Links to unpublished notes are safe
+> If a wikilink points at a draft, an unpublished decision, or a note with no
+> page at all, the words render as plain text instead of a link. A private
+> note can never become a 404 for a visitor.
+
+### Setting it up
+
+1. Obsidian → **Open folder as vault** → choose this repository.
+2. The committed `.obsidian/` config already sets attachments to
+   `public/attachments/`, points templates at `_templates/`, and hides
+   `node_modules/`, `dist/`, and the source folders from the file explorer.
+3. Install the **Obsidian Git** community plugin to commit and push without
+   leaving the app. Per-machine UI state (`workspace.json`, installed plugins)
+   is gitignored, so two machines will not fight.
+
+### Two traps worth knowing
+
+> [!warning] YAML eats colons
+> A bullet like `- Cut latency: 2.1s to 340ms` parses as a **map**, not a
+> string, and fails the build. Quote any value containing `: ` —
+> `- "Cut latency: 2.1s to 340ms"`. Years are safe: `start: 2024` is coerced
+> from a number automatically.
+
+> [!warning] Editing the plugin does not invalidate rendered notes
+> Astro caches rendered content in `node_modules/.astro/data-store.json`,
+> keyed on the note. If you change `remark-obsidian.mjs` and output looks
+> stale, clear it:
+> ```bash
+> rm -rf .astro dist node_modules/.astro && pnpm build
+> ```
+
+### Writing without Obsidian
+
+Everything is plain Markdown, so the GitHub web editor still works in a pinch.
+Nothing about the vault locks you in.
 
 ## Content
 
@@ -79,10 +163,11 @@ their own `thumbnail` path. The Videos section hides itself when the array is em
 
 ### Adding a project case study
 
-Create a `.mdx` file in `src/content/projects/`. The card leads with `outcome` and
-`metrics`, so put the result there — the body explains how you got it:
+Create a note in `src/content/projects/` (the `Project` template sets this up).
+The card leads with `outcome` and `metrics`, so put the result there — the body
+explains how you got it:
 
-```mdx
+```md
 ---
 title: "Checkout rewrite"
 description: "One-liner shown in listings and search results."
@@ -112,9 +197,11 @@ the repo and live links.
 
 ### Adding a blog post
 
-Create a `.mdx` file in `src/content/blog/`:
+Create a `.md` file in `src/content/blog/` — or press **Ctrl/Cmd + N** in Obsidian
+and apply the `Article` template. Prefer `.md` over `.mdx` for prose; MDX exists
+for notes that genuinely need components, and its JSX confuses editors.
 
-```mdx
+```md
 ---
 title: "My Post Title"
 description: "One-sentence summary shown in the post list."
@@ -175,18 +262,22 @@ documentation claiming Vercel was wrong.
 
 ```
 src/
-├── content/
-│   ├── blog/        ← blog posts (.mdx)
-│   └── projects/    ← project case studies (.mdx)
+├── content/         ← the Obsidian vault
+│   ├── blog/        ← articles
+│   ├── projects/    ← case studies
+│   ├── cv/          ← one note per role / degree / certification
+│   ├── decisions/   ← decision log (private by default)
+│   └── events/      ← milestones (private by default)
 ├── data/
-│   ├── site.json    ← identity, socials, booking, availability
+│   ├── site.json    ← identity, socials, booking, availability, skills
 │   ├── services.json← consulting offers
 │   ├── videos.json  ← video list (schema-validated)
-│   ├── cv.json      ← resume data
 │   └── uses.json    ← tools/gear data
 ├── pages/           ← routes
 ├── layouts/         ← BaseLayout, PageLayout, ProseLayout
 ├── components/      ← nav, ui, home, blog, projects, videos, cv, contact
+├── plugins/
+│   └── remark-obsidian.mjs  ← wikilinks, embeds, highlights, callouts
 ├── styles/
 │   └── global.css   ← tokens, blueprint utilities, motion
 └── utils/           ← formatDate, sortPosts, video, cta

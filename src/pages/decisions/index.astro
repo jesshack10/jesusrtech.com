@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+import SectionHeading from '../../components/ui/SectionHeading.astro';
+import { formatDate } from '../../utils/formatDate';
+
+/* Private by default — only notes explicitly marked `publish: true` appear. */
+const decisions = (await getCollection('decisions'))
+  .filter((d) => d.data.publish)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const statusVariant = {
+  accepted:   'text-[var(--ok)]',
+  proposed:   'text-accent',
+  superseded: 'text-muted',
+  rejected:   'text-muted',
+} as const;
+---
+
+<PageLayout
+  title="Decisions — jesusrtech"
+  description="Why this project is built the way it is."
+>
+  <div class="mx-auto max-w-3xl px-6 py-16">
+    <SectionHeading
+      index="//"
+      label="Log"
+      lede="A record of the choices behind this project and what they cost. Written for my future self; published because the reasoning may be useful to someone else."
+    >
+      Decisions
+    </SectionHeading>
+
+    {decisions.length > 0 ? (
+      <ol class="space-y-3">
+        {decisions.map((entry, i) => (
+          <li
+            class="bp-ticks group relative border border-border bg-surface/40 p-5
+                   transition-colors hover:border-accent/40 hover:bg-surface"
+            data-reveal
+            style={`--reveal-delay: ${i * 60}ms`}
+          >
+            <div class="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+              <span class="bp-label">
+                <time datetime={entry.data.date.toISOString()}>{formatDate(entry.data.date)}</time>
+              </span>
+              <span aria-hidden="true" class="h-3 w-px bg-border"></span>
+              <span class:list={['bp-label', statusVariant[entry.data.status]]}>
+                {entry.data.status}
+              </span>
+            </div>
+
+            <h2 class="font-semibold tracking-tight text-foreground">
+              <a
+                href={`/decisions/${entry.id}`}
+                class="transition-colors after:absolute after:inset-0 hover:text-accent"
+              >
+                {entry.data.title}
+              </a>
+            </h2>
+
+            <p class="mt-2 text-sm leading-relaxed text-secondary text-pretty">
+              {entry.data.summary}
+            </p>
+          </li>
+        ))}
+      </ol>
+    ) : (
+      <p class="border border-dashed border-border p-8 text-center text-sm text-muted">
+        Nothing published yet. Decision notes stay private until their frontmatter
+        says <code class="font-mono text-accent">publish: true</code>.
+      </p>
+    )}
+  </div>
+</PageLayout>

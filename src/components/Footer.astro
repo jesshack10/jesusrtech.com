@@ -1,8 +1,13 @@
 ---
+import { getCollection } from 'astro:content';
 import SocialLinks from './contact/SocialLinks.astro';
 import site from '../data/site.json';
 
 const year = new Date().getFullYear();
+
+/* /decisions exists only once a decision note is published, so the link
+   appears on its own rather than pointing at an empty page. */
+const hasDecisions = (await getCollection('decisions')).some((d) => d.data.publish);
 
 const columns = [
   {
@@ -25,6 +30,7 @@ const columns = [
     label: 'More',
     links: [
       { href: '/uses', text: 'Uses' },
+      ...(hasDecisions ? [{ href: '/decisions', text: 'Decisions' }] : []),
       { href: '/contact', text: 'Contact' },
     ],
   },

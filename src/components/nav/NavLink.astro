@@ -9,10 +9,15 @@ const { href, mobile = false } = Astro.props;
 const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const target = href.replace(/\/+$/, '') || '/';
 const isActive = target === '/' ? path === '/' : path === target || path.startsWith(target + '/');
+
+/* Links to other sites (e.g. apps.jesusrtech.com) open in a new tab and say so. */
+const external = /^https?:\/\//.test(href);
 ---
 
 <a
   href={href}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
   aria-current={isActive ? 'page' : undefined}
   class:list={[
     'relative text-sm font-medium transition-colors',
@@ -20,7 +25,7 @@ const isActive = target === '/' ? path === '/' : path === target || path.startsW
     isActive ? 'text-foreground' : 'text-secondary hover:text-foreground',
   ]}
 >
-  <slot />
+  <slot />{external && <span aria-hidden="true" class="ml-0.5 text-muted">↗</span>}
   {isActive && (
     <span
       aria-hidden="true"

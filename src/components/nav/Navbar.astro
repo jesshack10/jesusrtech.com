@@ -11,6 +11,7 @@ const hasVideos = (await getCollection('videos')).length > 0;
 
 const navLinks = [
   { href: '/projects', label: 'Work' },
+  { href: 'https://apps.jesusrtech.com', label: 'Apps' },
   ...(hasVideos ? [{ href: '/videos', label: 'Videos' }] : []),
   { href: '/blog',     label: 'Writing' },
   { href: '/cv',       label: 'CV' },

@@ -1,0 +1,38 @@
+---
+title: "carterapp — Personal Finance PWA"
+description: "An offline-first personal finance app for Mexico: three taps per expense, MXN and USD side by side, installable from the browser."
+pubDate: 2026-10-01
+status: active
+role: "Design, build, and launch"
+year: "2026"
+outcome: "A finance tracker that logs an expense in three taps, works with no signal, and shows when card payments and bills will collide before they do."
+metrics:
+  - label: "Taps per expense"
+    value: "3"
+  - label: "Languages"
+    value: "ES / EN"
+  - label: "Works offline"
+    value: "Yes"
+tags: ["react", "typescript", "pwa", "supabase", "offline-first"]
+liveUrl: "https://carterapp.com.mx"
+featured: true
+order: 2
+---
+
+## Problem
+
+Most people stop tracking their spending because logging an expense takes too long. In Mexico there's a second problem: money lives in pesos and dollars, and card cut-off and payment dates pile up around paydays.
+
+## Approach
+
+Every decision was judged against one question: *does this add a tap?*
+
+- **One-screen entry** — amount, category, and account on a single screen, with a keypad built for thumbs. Users can reorder the fields.
+- **Offline-first** — every record is written to the device first (IndexedDB) and synced to Postgres later. IDs are minted on the device, so syncing twice never duplicates anything.
+- **Integrity in the database** — composite foreign keys make it impossible for a transaction to disagree with its account's currency or its category's type. MXN and USD are never converted or summed together.
+- **Planning views** — monthly budgets per category, every card's cut-off and payment date on one calendar next to bills and paychecks, and a month-end balance projection that warns before the balance dips below zero.
+- **Platform** — an installable PWA in Spanish and English, with a backend for subscriptions (Stripe) and push notifications.
+
+## Outcome
+
+carterapp is live at [carterapp.com.mx](https://carterapp.com.mx): a first expense is logged in under two minutes from landing on the site, and it keeps working on the metro or on a plane.

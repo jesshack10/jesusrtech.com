@@ -5,7 +5,7 @@
   "brand": "jesusrtech",
   "role": "Senior Software Engineer",
   "positioning": "I build C/C++ systems that have to work — embedded firmware, device ports, and the APIs and AI backends that sit on top of them.",
-  "bio": "Senior software engineer with 10 years in C/C++ — from 16-bit microcontrollers and CAN bus tooling at John Deere to Amazon Fire TV middleware and API backends today. I've led teams of 10+ engineers, served as Scrum Master, and designed the simulators, test tooling, and backends other teams depend on. Based in Monterrey (UTC-6) and open to remote work with US teams.",
+  "bio": "Senior software engineer with 10 years in C/C++ — from 16-bit microcontrollers and CAN bus tooling at John Deere to Amazon Fire TV middleware and API backends today. I've led teams of 10+ engineers, served as Scrum Master, and designed the simulators, test tooling, and backends other teams depend on. Independently, I build web and AI products for clients. Based in Monterrey (UTC-6) and open to remote work with US teams.",
   "location": "Monterrey, Mexico",
   "timezone": "UTC-6",
   "remote": true,
@@ -13,7 +13,7 @@
   "booking": {
     "url": "",
     "label": "Book a 30-min call",
-    "note": "TODO — paste your Cal.com or Calendly URL. While this is empty the site falls back to the email CTA automatically, so nothing breaks."
+    "note": "Paste your Google Calendar booking page link here (it looks like https://calendar.app.google/…). Create it in Google Calendar → Create → Appointment schedule → 30 min → Save → Share → copy link. While this is empty the site falls back to the email CTA automatically."
   },
   "availability": {
     "status": "open",

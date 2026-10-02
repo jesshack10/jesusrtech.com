@@ -11,7 +11,7 @@
   "remote": true,
   "email": "jesusramirezn.tech@gmail.com",
   "booking": {
-    "url": "",
+    "url": "https://calendar.app.google/jdQw4UNfebAuNsWV9",
     "label": "Book a 30-min call",
     "note": "Paste your Google Calendar booking page link here (it looks like https://calendar.app.google/…). Create it in Google Calendar → Create → Appointment schedule → 30 min → Save → Share → copy link. While this is empty the site falls back to the email CTA automatically."
   },

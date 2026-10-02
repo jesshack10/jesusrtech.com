@@ -1,7 +1,7 @@
 ---
 title: "apps.jesusrtech.com — Real-Time Games and Tools for Groups"
 description: "Party games and group tools that turn everyone's phone into part of the game: scan a QR code, join in seconds, and play together in real time."
-pubDate: 2026-07-12
+pubDate: 2026-09-25
 status: active
 role: "Design and build"
 client: "Personal"
@@ -9,7 +9,7 @@ year: "2026"
 outcome: "A room full of people joins from their own phones in seconds — no app store, no accounts — and the game runs itself, so the host gets to play too."
 metrics:
   - label: "Apps"
-    value: "4"
+    value: "5"
   - label: "Join time"
     value: "Seconds"
   - label: "Accounts needed"
@@ -31,13 +31,14 @@ The rule for every app: **anyone at the table can join in seconds, from the phon
 
 - **Impostor** — every player secretly gets the same word, except one: the impostor. Players describe the word without giving it away and try to spot who's bluffing. The app deals the words privately to each phone from a bank of more than 300.
 - **Werewolf** — the classic social-deduction game with werewolves, a seer, a doctor, and villagers. The app helps balance roles for the group size, deals them in secret, guides the moderator through each night, and runs the votes.
+- **Lotería** — Mexico's classic Lotería, played on phones. Each player gets a board, the host calls the cards, and the app checks every “¡Lotería!” against the cards actually called — marking ahead earns a false alarm, not a win. Groups choose from five decks — the traditional one, plus Programming, Bible, Food, and **Matrimonios**, a deck for couples where a square is won only by guessing what your partner secretly answered — or paste a list to make their own. Teams and a running score carry across rounds, which makes it work for family nights, church groups, and events.
 - **Peticiones** — a request exchange for groups and events. Everyone submits a personal request, anonymously if they prefer, and the app assigns each participant someone else's request to support — no papers, no hat, no one seeing who wrote what.
-- **Pomodoro** — a focus timer for study and work sessions, with an intention for each session and calm visual feedback (an hourglass, a growing plant, a painting that fills in) instead of a ticking clock.
+- **Pomodoro** — a focus timer for study and work: set an intention, chain time blocks, and get a chime and background alarm (via Web Push) when a block ends. Every session lands in a time journal you can export to your calendar, and the screen stays on while the timer runs.
 
 ## How it works
 
 - **Join by QR code or 6-digit code.** The host's screen shows a QR code and a short code; players scan or type it and are in. Players are signed in anonymously behind the scenes, so nobody creates an account.
-- **Real-time sync.** Game state lives in Firebase Realtime Database, so every phone updates instantly when a role is dealt, a vote is cast, or a round ends. Each phone shows only its own secret word or role.
+- **Real-time sync.** Game state lives in Firebase Realtime Database, so every phone updates instantly when a role is dealt, a vote is cast, or a round ends. Each phone shows only its own secret word, role, or board.
 - **A shared rooms module.** Lobbies, join flows, player lists, kicking, and generated animal avatars live in one reusable module, so a new game starts from a working multiplayer foundation instead of from scratch.
 - **Sessions clean up after themselves.** Sessions expire after an hour, and session codes are claimed atomically so two groups never collide.
 - **Installable.** It's a progressive web app — open it once and add it to the home screen.

@@ -1,37 +1,60 @@
 {
   "categories": [
     {
-      "name": "Hardware",
+      "name": "AI",
       "items": [
-        { "name": "MacBook Pro 14\"", "description": "M3 Pro chip. Handles everything from daily development to video rendering without breaking a sweat.", "url": "https://www.apple.com/macbook-pro/" },
-        { "name": "LG 27UK850-W", "description": "27\" 4K USB-C monitor. Great color accuracy, perfect for side-by-side coding and design work.", "url": "https://www.lg.com" },
-        { "name": "Keychron K2", "description": "Compact 75% mechanical keyboard with red switches. Quiet enough for calls, tactile enough to enjoy.", "url": "https://www.keychron.com" },
-        { "name": "Logitech MX Master 3", "description": "The best mouse I've used. The scroll wheel alone is worth it.", "url": "https://www.logitech.com" }
+        { "name": "Claude Code", "description": "My AI coding agent. I use it across every repository — planning features, writing and reviewing code, and opening pull requests I review before merging.", "url": "https://claude.com/claude-code" },
+        { "name": "Claude", "description": "For thinking through designs, writing, and research before the code starts.", "url": "https://claude.ai" }
       ]
     },
     {
-      "name": "Editor & Terminal",
+      "name": "Operating systems",
       "items": [
-        { "name": "VS Code", "description": "Primary editor. Fast, extensible, and has the best ecosystem for web development.", "url": "https://code.visualstudio.com" },
-        { "name": "Cursor", "description": "AI-native fork of VS Code I use for greenfield projects and exploration.", "url": "https://cursor.sh" },
-        { "name": "Warp", "description": "Modern terminal with AI command completion and shareable command blocks.", "url": "https://www.warp.dev" },
-        { "name": "Catppuccin Mocha", "description": "My theme of choice across editor and terminal. Easy on the eyes for long sessions.", "url": "https://github.com/catppuccin" }
+        { "name": "Linux", "description": "Where embedded toolchains, servers, and most of my C/C++ work live. Ubuntu on the servers I run.", "url": "https://ubuntu.com" },
+        { "name": "Windows 11", "description": "Daily desktop, plus Visual C++ work and cross-platform testing.", "url": "https://www.microsoft.com/windows" }
       ]
     },
     {
-      "name": "Apps",
+      "name": "Editors & terminal",
       "items": [
-        { "name": "Raycast", "description": "Launcher, clipboard history, window manager, and snippet library — all in one.", "url": "https://www.raycast.com" },
-        { "name": "Linear", "description": "For personal project tracking. Keyboard-driven and beautifully fast.", "url": "https://linear.app" },
-        { "name": "Obsidian", "description": "Second brain for notes, research, and writing drafts. Plain Markdown files, no lock-in.", "url": "https://obsidian.md" },
-        { "name": "Figma", "description": "Design and wireframing. I use it to prototype UIs before touching code.", "url": "https://www.figma.com" }
+        { "name": "VS Code", "description": "Primary editor for C/C++, Python, TypeScript, and everything in between.", "url": "https://code.visualstudio.com" },
+        { "name": "Visual Studio", "description": "For Visual C++ projects and when I need its debugger on Windows.", "url": "https://visualstudio.microsoft.com" },
+        { "name": "Bash, PowerShell & Git Bash", "description": "Bash on Linux, PowerShell and Git Bash on Windows — the same scripts on both where I can.", "url": "https://learn.microsoft.com/powershell" }
       ]
     },
     {
-      "name": "Browser Extensions",
+      "name": "Version control & planning",
       "items": [
-        { "name": "uBlock Origin", "description": "Best-in-class ad and tracker blocker. Non-negotiable.", "url": "https://github.com/gorhill/uBlock" },
-        { "name": "Refined GitHub", "description": "Adds dozens of small quality-of-life improvements to GitHub.", "url": "https://github.com/refined-github/refined-github" }
+        { "name": "Git", "description": "Every project, from firmware to this site.", "url": "https://git-scm.com" },
+        { "name": "Fork", "description": "Git client for reviewing history, staging hunks, and untangling rebases visually.", "url": "https://git-fork.com" },
+        { "name": "GitHub & GitHub Actions", "description": "Code hosting, pull requests, and CI/CD — every push to main deploys.", "url": "https://github.com" },
+        { "name": "Jira", "description": "Sprint planning and issue tracking on team projects.", "url": "https://www.atlassian.com/software/jira" }
+      ]
+    },
+    {
+      "name": "Notes & writing",
+      "items": [
+        { "name": "Obsidian", "description": "Second brain and the editor for this website — the whole site is an Obsidian vault of plain Markdown.", "url": "https://obsidian.md" },
+        { "name": "Sveltia CMS", "description": "Browser editor for this site when I'm away from my computer. Saves straight to GitHub.", "url": "https://github.com/sveltia/sveltia-cms" }
+      ]
+    },
+    {
+      "name": "Build & ship",
+      "items": [
+        { "name": "Supabase", "description": "Postgres, auth, row-level security, and edge functions for client apps like Mi 70-20-10 and carterapp.", "url": "https://supabase.com" },
+        { "name": "Firebase", "description": "Realtime Database for the multiplayer games at apps.jesusrtech.com.", "url": "https://firebase.google.com" },
+        { "name": "Vercel", "description": "Hosting and preview deployments for React apps.", "url": "https://vercel.com" },
+        { "name": "GitHub Pages", "description": "Static hosting for this site and apps.jesusrtech.com.", "url": "https://pages.github.com" },
+        { "name": "DigitalOcean", "description": "Linux servers for the Laravel apps I run.", "url": "https://www.digitalocean.com" },
+        { "name": "Docker", "description": "Reproducible toolchains and environments, from embedded builds to backends.", "url": "https://www.docker.com" },
+        { "name": "Stripe", "description": "Payments and subscriptions.", "url": "https://stripe.com" }
+      ]
+    },
+    {
+      "name": "Testing",
+      "items": [
+        { "name": "Google Test", "description": "Unit tests for C++.", "url": "https://github.com/google/googletest" },
+        { "name": "Vitest", "description": "Unit and component tests for TypeScript and React.", "url": "https://vitest.dev" }
       ]
     }
   ]

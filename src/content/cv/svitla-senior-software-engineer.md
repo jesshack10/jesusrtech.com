@@ -3,7 +3,7 @@ kind: "experience"
 title: "Senior Software Engineer"
 org: "Svitla Systems"
 orgUrl: "https://svitla.com"
-start: "2025-03"
+start: "2026-03"
 project: "API backend abstraction to migrate a legal reporting system to a newer platform version"
 highlights:
   - "Designing C++ features for an API backend abstraction layer that lets a legal reporting system migrate to its new platform version without breaking existing clients."

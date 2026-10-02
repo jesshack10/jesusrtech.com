@@ -1,8 +1,8 @@
 ---
 kind: "certification"
-title: "Generative AI Leader"
-org: "Google Cloud"
-start: "2025-08"
+title: "Google Cybersecurity Specialization"
+org: "Google"
+start: "2023-12"
 tags:
   - cv
   - certification

@@ -4,7 +4,7 @@ title: "Senior Software Engineer"
 org: "GlobalLogic"
 orgUrl: "https://www.globallogic.com"
 start: "2023-08"
-end: "2025-02"
+end: "2025-12"
 project: "Amazon Fire TV next generation — porting a third-party video streaming app to new devices and Amazon's new non-Android OS"
 highlights:
   - "Ported a major third-party video streaming app to Amazon's next-generation Fire TV devices, working in the middleware layer."

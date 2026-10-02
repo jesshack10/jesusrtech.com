@@ -4,7 +4,7 @@ title: "Senior Software Engineer"
 org: "GlobalLogic"
 orgUrl: "https://www.globallogic.com"
 start: "2023-08"
-end: "2025-02"
+end: "2025-12"
 project: "Test environment to automate embedded-system release processes for an engineering-services provider"
 highlights:
   - "Refactored a key desktop application with Python and PySimpleGUI, significantly improving readability and maintainability."

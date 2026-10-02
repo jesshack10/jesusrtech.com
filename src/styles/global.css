@@ -271,3 +271,42 @@ mark {
   --tw-prose-th-borders:      var(--border);
   --tw-prose-td-borders:      var(--line);
 }
+
+/* ── Print ─────────────────────────────────────────────────── */
+
+/* The CV page doubles as the downloadable PDF: print it from /cv and the
+   site chrome drops away, leaving a light, ink-friendly document. */
+@media print {
+  @page { size: Letter; margin: 0.55in 0.6in; }
+
+  :root,
+  .dark {
+    --accent:     #b45309;
+    --bg-base:    #ffffff;
+    --bg-surface: #ffffff;
+    --bg-elevated:#f1f3f5;
+    --border:     #d5dae1;
+    --line:       #e3e7ec;
+    --text-primary:   #14171a;
+    --text-secondary: #3f4650;
+    --text-muted:     #6b7480;
+  }
+
+  html { font-size: 11.5px; }
+  body { background: #fff; }
+
+  body > header,
+  body > footer,
+  a[href="#main"] { display: none !important; }
+
+  main > div { padding-top: 0 !important; padding-bottom: 0 !important; max-width: none !important; }
+
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+
+  main section { margin-bottom: 1.75rem; }
+  main section > h2 { margin-bottom: 1rem; }
+  h2, h3 { break-after: avoid; }
+  li { break-inside: avoid; }
+
+  a { text-decoration: none; }
+}

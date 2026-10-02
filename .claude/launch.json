@@ -4,7 +4,20 @@
     {
       "name": "jesusrtech-dev",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
+      "port": 4321,
+      "autoPort": true
+    },
+    {
+      "name": "jesusrtech-dev-npx",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "astro",
+        "dev"
+      ],
       "port": 4321,
       "autoPort": true
     }

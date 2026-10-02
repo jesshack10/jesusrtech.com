@@ -1,17 +1,21 @@
 ---
+import Tag from '../ui/Tag.astro';
+
 interface Props {
   role: string;
   company: string;
   companyUrl?: string;
   period: string;
-  location: string;
+  location?: string;
+  project?: string;
   bullets: string[];
+  technologies?: string[];
 }
 
-const { role, company, companyUrl, period, location, bullets } = Astro.props;
+const { role, company, companyUrl, period, location, project, bullets, technologies = [] } = Astro.props;
 ---
 
-<div class="mb-8 last:mb-0 grid sm:grid-cols-[1fr_auto] gap-x-4">
+<div class="mb-8 last:mb-0 grid sm:grid-cols-[1fr_auto] gap-x-4 print:mb-5">
   <div>
     <div class="flex flex-wrap items-baseline gap-x-2 mb-1">
       <h3 class="font-semibold text-foreground">{role}</h3>
@@ -23,6 +27,7 @@ const { role, company, companyUrl, period, location, bullets } = Astro.props;
         <span class="text-secondary text-sm">{company}</span>
       )}
     </div>
+    {project && <p class="text-sm text-foreground italic mt-1">Project: {project}</p>}
     <ul class="mt-2 space-y-1">
       {bullets.map((bullet) => (
         <li class="text-sm text-secondary leading-relaxed flex gap-2">
@@ -31,9 +36,14 @@ const { role, company, companyUrl, period, location, bullets } = Astro.props;
         </li>
       ))}
     </ul>
+    {technologies.length > 0 && (
+      <div class="flex flex-wrap gap-1.5 mt-3">
+        {technologies.map((tech) => <Tag variant="neutral">{tech}</Tag>)}
+      </div>
+    )}
   </div>
   <div class="text-right mt-0.5 shrink-0">
     <p class="text-xs text-muted whitespace-nowrap">{period}</p>
-    <p class="text-xs text-muted">{location}</p>
+    {location && <p class="text-xs text-muted">{location}</p>}
   </div>
 </div>

@@ -6,6 +6,7 @@ import CVSection from '../components/cv/CVSection.astro';
 import CVEntry from '../components/cv/CVEntry.astro';
 import SkillPills from '../components/cv/SkillPills.astro';
 import Button from '../components/ui/Button.astro';
+import Tag from '../components/ui/Tag.astro';
 import site from '../data/site.json';
 
 /* CV entries are Obsidian notes under src/content/cv/. Only the frontmatter
@@ -18,6 +19,20 @@ const byRecent = (a, b) => b.data.start.localeCompare(a.data.start);
 const experience     = entries.filter((e) => e.data.kind === 'experience').sort(byRecent);
 const education      = entries.filter((e) => e.data.kind === 'education').sort(byRecent);
 const certifications = entries.filter((e) => e.data.kind === 'certification').sort(byRecent);
+/* Projects sort by when they finished, so a long-running one stays near the top. */
+const byFinished = (a, b) => (b.data.end ?? b.data.start).localeCompare(a.data.end ?? a.data.start);
+const projects       = entries.filter((e) => e.data.kind === 'project').sort(byFinished);
+
+/* Contact line for the printed CV. Socials still marked TODO are left out,
+   and the phone number is deliberately never published. */
+const isReal = (url: string) => Boolean(url) && !url.trim().toUpperCase().startsWith('TODO');
+const siteHost = (Astro.site ?? new URL('https://jesusrtech.com')).host;
+const contact = [
+  { text: site.email, href: `mailto:${site.email}` },
+  { text: siteHost, href: `https://${siteHost}` },
+  ...site.socials.filter((s) => isReal(s.url) && ['github', 'linkedin'].includes(s.key))
+    .map((s) => ({ text: s.url.replace(/^https?:\/\/(www\.)?/, ''), href: s.url })),
+];
 
 /** "2023-01" → "Jan 2023"; a missing end date reads as Present. */
 function formatPeriod(start: string, end?: string) {
@@ -37,17 +52,26 @@ function formatPeriod(start: string, end?: string) {
   description={`Resume and professional background of ${site.name}.`}
 >
   <div class="mx-auto max-w-3xl px-6 py-16">
-    <div class="mb-14 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+    <div class="mb-4 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
       <SectionHeading index="//" label="Curriculum" class="mb-0 flex-1">
         {site.name}
       </SectionHeading>
 
       {site.cvPdf && (
-        <Button href={site.cvPdf} variant="secondary" size="sm" external>
+        <Button href={site.cvPdf} variant="secondary" size="sm" external class="print:hidden">
           Download PDF
         </Button>
       )}
     </div>
+
+    <p class="mb-2 text-sm text-secondary">
+      {site.role} · {site.location}
+    </p>
+    <ul class="mb-10 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+      {contact.map((c) => (
+        <li><a href={c.href} class="text-secondary hover:text-accent">{c.text}</a></li>
+      ))}
+    </ul>
 
     <p class="mb-14 max-w-2xl leading-relaxed text-secondary text-pretty">
       {site.bio}
@@ -61,8 +85,10 @@ function formatPeriod(start: string, end?: string) {
             company={entry.data.org}
             companyUrl={entry.data.orgUrl}
             period={formatPeriod(entry.data.start, entry.data.end)}
-            location={entry.data.location ?? ''}
+            location={entry.data.location}
+            project={entry.data.project}
             bullets={entry.data.highlights}
+            technologies={entry.data.technologies}
           />
         ))}
       </CVSection>
@@ -74,10 +100,10 @@ function formatPeriod(start: string, end?: string) {
           <div class="mb-4 grid gap-x-4 last:mb-0 sm:grid-cols-[1fr_auto]">
             <div>
               <h3 class="font-semibold text-foreground">{entry.data.title}</h3>
-              <p class="text-sm text-secondary">{entry.data.org}</p>
+              {entry.data.org && <p class="text-sm text-secondary">{entry.data.org}</p>}
             </div>
             <div class="mt-0.5 shrink-0 text-right">
-              <p class="bp-label">{formatPeriod(entry.data.start, entry.data.end)}</p>
+              <p class="bp-label">{entry.data.end ? formatPeriod(entry.data.start, entry.data.end) : entry.data.start}</p>
               {entry.data.location && <p class="bp-label mt-1">{entry.data.location}</p>}
             </div>
           </div>
@@ -91,12 +117,38 @@ function formatPeriod(start: string, end?: string) {
       ))}
     </CVSection>
 
+    {projects.length > 0 && (
+      <CVSection title="Projects & Awards">
+        <ul class="space-y-3">
+          {projects.map((entry) => (
+            <li class="grid grid-cols-[6.5rem_1fr] gap-x-4 text-sm">
+              <span class="bp-label mt-1">{entry.data.end ? `${entry.data.start} – ${entry.data.end}` : entry.data.start}</span>
+              <div>
+                <p class="leading-relaxed text-secondary">{entry.data.title}</p>
+                {entry.data.award && <p class="mt-1.5"><Tag variant="accent">{entry.data.award}</Tag></p>}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </CVSection>
+    )}
+
+    {site.languages?.length > 0 && (
+      <CVSection title="Languages">
+        <ul class="flex flex-wrap gap-x-8 gap-y-2 text-sm">
+          {site.languages.map((lang) => (
+            <li><span class="font-medium text-foreground">{lang.name}</span> <span class="text-secondary">— {lang.level}</span></li>
+          ))}
+        </ul>
+      </CVSection>
+    )}
+
     {certifications.length > 0 && (
       <CVSection title="Certifications">
         {certifications.map((entry) => (
           <div class="mb-3 flex items-baseline justify-between gap-4 last:mb-0">
             <span class="text-sm font-medium text-foreground">{entry.data.title}</span>
-            <span class="bp-label shrink-0">{entry.data.org} · {entry.data.start}</span>
+            <span class="bp-label shrink-0">{entry.data.org} · {formatPeriod(entry.data.start).split(' – ')[0]}</span>
           </div>
         ))}
       </CVSection>

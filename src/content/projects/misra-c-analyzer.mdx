@@ -1,0 +1,21 @@
+---
+title: "MISRA-C Static Code Analyzer"
+description: "A syntax and semantics analyzer that validates C code against MISRA-C coding standards, built with Flex and Bison."
+pubDate: 2016-12-01
+status: completed
+tags: ["c", "compilers", "flex", "bison", "static-analysis"]
+featured: true
+order: 3
+---
+
+## Overview
+
+A static analyzer that checks C source files against the MISRA-C coding standard — the rule set used for safety-critical embedded software.
+
+## How it works
+
+- **Flex** tokenizes the C source.
+- **Bison** parses the grammar and drives the semantic checks.
+- Violations are reported back so bad practices are caught before code review.
+
+This grew out of my internship at John Deere, where I built a static analyzer with a graphical interface that highlighted bad coding practices directly in the file.

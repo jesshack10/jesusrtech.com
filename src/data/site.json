@@ -1,15 +1,15 @@
 {
   "_readme": "Identity and contact details for the whole site. Every value marked TODO is a placeholder — replace it before this goes live. Nothing here is invented from real data.",
-  "name": "Jesús Ramírez",
+  "name": "Jesús Ramírez Nava",
   "shortName": "Jesús",
   "brand": "jesusrtech",
-  "role": "TODO — your title, e.g. 'Senior Backend Engineer'",
-  "positioning": "TODO — the one line that sells you. Name the problem you solve and who for. Example: 'I make slow Rails applications fast for Series-A teams.' Avoid 'passionate software engineer'.",
-  "bio": "TODO — two or three sentences. What you do, who you do it for, what a client walks away with.",
-  "location": "TODO — City, Country",
-  "timezone": "TODO — e.g. UTC-6",
+  "role": "Senior Software Engineer",
+  "positioning": "I build C/C++ systems that have to work — embedded firmware, device ports, and the APIs and AI backends that sit on top of them.",
+  "bio": "Senior software engineer with 10 years in C/C++ — from 16-bit microcontrollers and CAN bus tooling at John Deere to Amazon Fire TV middleware and API backends today. I've led teams of 10+ engineers, served as Scrum Master, and designed the simulators, test tooling, and backends other teams depend on. Based in Monterrey (UTC-6) and open to remote work with US teams.",
+  "location": "Monterrey, Mexico",
+  "timezone": "UTC-6",
   "remote": true,
-  "email": "hello@jesusrtech.com",
+  "email": "jesusramirezn.tech@gmail.com",
   "booking": {
     "url": "",
     "label": "Book a 30-min call",
@@ -35,9 +35,37 @@
     {
       "key": "linkedin",
       "name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/jesusramireznava",
+      "handle": "in/jesusramireznava",
+      "blurb": "Work history and the professional side of things."
+    },
+    {
+      "key": "instagram",
+      "name": "Instagram",
+      "url": "https://www.instagram.com/jesusrtech",
+      "handle": "@jesusrtech",
+      "blurb": "Behind the scenes and day-to-day."
+    },
+    {
+      "key": "tiktok",
+      "name": "TikTok",
+      "url": "https://www.tiktok.com/@jesusrtech",
+      "handle": "@jesusrtech",
+      "blurb": "Short tech videos."
+    },
+    {
+      "key": "x",
+      "name": "X",
+      "url": "https://x.com/jesusrtech",
+      "handle": "@jesusrtech",
+      "blurb": "Short notes on what I'm building."
+    },
+    {
+      "key": "facebook",
+      "name": "Facebook",
       "url": "TODO",
       "handle": "TODO",
-      "blurb": "Work history and the professional side of things."
+      "blurb": "The Jesús R Tech page."
     },
     {
       "key": "youtube",
@@ -45,53 +73,83 @@
       "url": "TODO",
       "handle": "TODO",
       "blurb": "Walkthroughs, deep dives, and build logs."
-    },
-    {
-      "key": "x",
-      "name": "X",
-      "url": "TODO",
-      "handle": "TODO",
-      "blurb": "Short notes on what I'm building."
     }
   ],
-  "cvPdf": "",
+  "cvPdf": "/jesus-ramirez-cv.pdf",
   "stack": [
     {
       "category": "Languages",
       "items": [
-        "TypeScript",
-        "JavaScript",
+        "C",
+        "C++",
         "Python",
-        "SQL"
+        "C#",
+        "Go",
+        "SQL",
+        "PHP"
       ]
     },
     {
-      "category": "Frontend",
+      "category": "Embedded",
       "items": [
+        "16/32-bit microcontrollers",
+        "FreeRTOS",
+        "CAN / J1939",
+        "Ethernet",
+        "Hardware simulation"
+      ]
+    },
+    {
+      "category": "Frameworks & UI",
+      "items": [
+        "Qt",
         "React",
-        "Astro",
-        "Tailwind CSS",
-        "Next.js"
+        "Laravel",
+        "PySimpleGUI",
+        "Google Test"
       ]
     },
     {
-      "category": "Backend",
+      "category": "Backend & Systems",
       "items": [
-        "Node.js",
-        "FastAPI",
-        "PostgreSQL",
-        "Redis"
+        "API design",
+        "API/ABI integration",
+        "Third-party SDKs",
+        "AI backends",
+        "Systems design"
       ]
     },
     {
-      "category": "DevOps",
+      "category": "DevOps & Tools",
       "items": [
         "Docker",
-        "GitHub Actions",
-        "Vercel",
-        "AWS"
+        "AWS",
+        "Jenkins",
+        "CI/CD",
+        "Linux",
+        "Git",
+        "Jira"
+      ]
+    },
+    {
+      "category": "Leadership",
+      "items": [
+        "Tech lead",
+        "Scrum Master",
+        "Team of 10+",
+        "Hiring & onboarding"
       ]
     }
   ],
-  "_stackNote": "Skill groups shown in the hero spec panel and on the CV. Structured data, so it stays here rather than becoming a note."
+  "_stackNote": "Skill groups shown in the hero spec panel and on the CV. Structured data, so it stays here rather than becoming a note.",
+  "languages": [
+    {
+      "name": "Spanish",
+      "level": "Native"
+    },
+    {
+      "name": "English",
+      "level": "B2"
+    }
+  ]
 }

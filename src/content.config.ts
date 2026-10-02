@@ -65,7 +65,7 @@ const projects = defineCollection({
 const cv = defineCollection({
   loader: glob({ pattern: NOTES, base: './src/content/cv', ignore }),
   schema: z.object({
-    kind:   z.enum(['experience', 'education', 'certification']),
+    kind:   z.enum(['experience', 'education', 'certification', 'project']),
     title:  z.string(),
     /** Company, school, or issuing body. */
     org:    z.string(),
@@ -79,6 +79,12 @@ const cv = defineCollection({
     end:    z.coerce.string().optional(),
     /** Bullets shown on the public CV. Keep them outcome-shaped. */
     highlights: z.array(z.string()).default([]),
+    /** One line naming the engagement, for roles that span several projects. */
+    project: z.string().optional(),
+    /** Shown as pills under the highlights. */
+    technologies: z.array(z.string()).default([]),
+    /** For kind: project — a competition win or recognition. */
+    award: z.string().optional(),
     tags:    z.array(z.string()).default([]),
     publish: z.boolean().default(true),
   }),

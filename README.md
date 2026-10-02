@@ -70,6 +70,22 @@ Only a CV note's **frontmatter** is rendered — `title`, `org`, dates, and
 `highlights`. The body below is yours: context, evidence, links, interview
 prep. Write freely there; none of it is published.
 
+`kind` is one of `experience`, `education`, `certification`, or `project`.
+Experience notes also take an optional `project` line and a `technologies`
+list; project notes take an optional `award`.
+
+**The downloadable PDF is printed from `/cv`.** Print styles in
+`global.css` strip the site chrome, so after editing CV notes run
+`pnpm build`, serve `dist/` (for example `python -m http.server 4399` inside
+it), and print `http://localhost:4399/cv/` to `public/jesus-ramirez-cv.pdf` —
+either from the browser's print dialog or headless:
+
+```bash
+msedge --headless=new --no-pdf-header-footer --print-to-pdf=public/jesus-ramirez-cv.pdf http://localhost:4399/cv/
+```
+
+The PDF never includes a phone number; keep it that way.
+
 ### Obsidian syntax that works on the site
 
 A `remark` plugin (`src/plugins/remark-obsidian.mjs`) teaches the build

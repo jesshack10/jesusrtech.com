@@ -135,6 +135,22 @@ Obsidian's dialect, so notes render correctly without being rewritten:
 Everything is plain Markdown, so the GitHub web editor still works in a pinch.
 Nothing about the vault locks you in.
 
+### The browser editor — `jesusrtech.com/admin`
+
+[Sveltia CMS](https://github.com/sveltia/sveltia-cms) gives a form-based editor
+for blog posts, projects, CV entries, and services. Every save is a commit to
+`main`, so the site redeploys about a minute later. Config:
+`public/admin/config.yml` — keep its fields in step with `src/content.config.ts`.
+
+**Signing in:** use **Sign In Using Access Token**. Create a fine-grained token
+at GitHub → Settings → Developer settings → Fine-grained tokens, limited to the
+`jesusrtech.com` repository with **Contents: Read and write**. The token stays
+in your browser; treat it like a password. ("Sign In with GitHub" needs an
+OAuth relay that isn't set up.) On your own computer, **Work with Local
+Repository** edits the files directly with no token at all.
+
+New blog posts start as **drafts** — untick *Draft* to publish.
+
 ## Content
 
 ### Who you are — `src/data/site.json`

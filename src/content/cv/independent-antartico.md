@@ -3,11 +3,11 @@ kind: "experience"
 title: "Independent Software Engineer"
 org: "jesusrtech"
 orgUrl: "https://jesusrtech.com"
-start: "2023-01"
-end: "2023-06"
-project: "Antártico — order management for cold-storage spaces (antartico.com.mx)"
+start: "2020"
+end: "2021"
+project: "Antártico — order management for cold-storage spaces"
 highlights:
-  - "Designed and built a web app to manage orders for cold-storage spaces, from the data model to deployment, in about six months."
+  - "Designed and built a web app to manage orders for cold-storage spaces, from the data model to deployment."
   - "Built it on Laravel and SQL behind a login, and deployed and ran it on a DigitalOcean server."
 technologies:
   - "Laravel"
@@ -24,9 +24,7 @@ publish: true
 
 ## Context
 
-TODO — confirm the exact months (assumed Jan–Jun 2023).
-
-TODO — antartico.com.mx serves its login page over plain HTTP; add HTTPS (e.g. Certbot) before linking to it.
+Same app as the old "cold-storage orders" project line. Do not link the website publicly.
 
 ## Notes
 

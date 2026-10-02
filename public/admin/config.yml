@@ -1,0 +1,136 @@
+# Sveltia CMS — the browser editor at jesusrtech.com/admin.
+# Every save is a commit to `main`, and every push to `main` redeploys the site.
+# Field names mirror the schemas in src/content.config.ts; keep them in step.
+
+backend:
+  name: github
+  repo: jesshack10/jesusrtech.com
+  branch: main
+  commit_messages:
+    create: "Create {{collection}} “{{slug}}” (via editor)"
+    update: "Update {{collection}} “{{slug}}” (via editor)"
+    delete: "Delete {{collection}} “{{slug}}” (via editor)"
+    uploadMedia: "Upload “{{path}}” (via editor)"
+    deleteMedia: "Delete “{{path}}” (via editor)"
+
+site_url: https://jesusrtech.com
+display_url: https://jesusrtech.com
+
+# Same folder Obsidian pastes images into.
+media_folder: public/attachments
+public_folder: /attachments
+
+slug:
+  encoding: ascii
+  clean_accents: true
+
+collections:
+  # ── Blog ──────────────────────────────────────────────────
+  - name: blog
+    label: Blog posts
+    label_singular: Blog post
+    folder: src/content/blog
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    preview_path: "blog/{{slug}}"
+    sortable_fields: [pubDate, title]
+    summary: "{{title}} — {{pubDate}}"
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: description, label: Description, widget: string, hint: "One sentence shown in the post list." }
+      - { name: pubDate, label: Published, widget: datetime, format: YYYY-MM-DD, time_format: false }
+      - { name: updatedDate, label: Updated, widget: datetime, format: YYYY-MM-DD, time_format: false, required: false }
+      - { name: heroImage, label: Hero image, widget: image, required: false }
+      - { name: tags, label: Tags, widget: list, default: [] }
+      - { name: draft, label: Draft (hidden from the site), widget: boolean, default: true }
+      - { name: featured, label: Featured, widget: boolean, default: false }
+      - { name: body, label: Body, widget: markdown }
+
+  # ── Projects / case studies ───────────────────────────────
+  - name: projects
+    label: Projects
+    label_singular: Project
+    folder: src/content/projects
+    extension: mdx
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    preview_path: "projects/{{slug}}"
+    sortable_fields: [order, pubDate, title]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: description, label: Description, widget: string }
+      - { name: pubDate, label: Date, widget: datetime, format: YYYY-MM-DD, time_format: false }
+      - { name: status, label: Status, widget: select, options: [active, completed, archived], default: completed }
+      - { name: role, label: Your role, widget: string, required: false }
+      - { name: client, label: Client, widget: string, required: false }
+      - { name: confidential, label: Confidential client (hide name and links), widget: boolean, default: false }
+      - { name: year, label: Year, widget: string, required: false }
+      - { name: outcome, label: Outcome (shown on the card), widget: text, required: false }
+      - name: metrics
+        label: Metrics (max 3)
+        widget: list
+        required: false
+        max: 3
+        fields:
+          - { name: label, label: Label, widget: string }
+          - { name: value, label: Value, widget: string }
+      - { name: tags, label: Tags, widget: list, default: [] }
+      - { name: heroImage, label: Hero image, widget: image, required: false }
+      - { name: liveUrl, label: Live URL, widget: string, required: false }
+      - { name: repoUrl, label: Repo URL, widget: string, required: false }
+      - { name: featured, label: Featured on the home page, widget: boolean, default: false }
+      - { name: order, label: Order, widget: number, value_type: int, required: false }
+      - { name: body, label: Body, widget: markdown }
+
+  # ── CV ────────────────────────────────────────────────────
+  # Only the fields are published; the body is private notes.
+  - name: cv
+    label: CV entries
+    label_singular: CV entry
+    folder: src/content/cv
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    summary: "{{kind}} · {{title}} — {{org}} ({{start}})"
+    sortable_fields: [start, kind, title]
+    fields:
+      - { name: kind, label: Kind, widget: select, options: [experience, education, certification, project] }
+      - { name: title, label: Title / role, widget: string }
+      - { name: org, label: Company / school / issuer, widget: string }
+      - { name: orgUrl, label: Organization URL, widget: string, required: false }
+      - { name: location, label: Location, widget: string, required: false }
+      - { name: start, label: Start (YYYY or YYYY-MM), widget: string, pattern: ['^\d{4}(-\d{2})?$', 'Use YYYY or YYYY-MM'] }
+      - { name: end, label: End (leave empty if current), widget: string, required: false, pattern: ['^(\d{4}(-\d{2})?)?$', 'Use YYYY or YYYY-MM'] }
+      - { name: project, label: Project line, widget: string, required: false }
+      - { name: highlights, label: Highlights (published bullets), widget: list, required: false }
+      - { name: technologies, label: Technologies, widget: list, required: false }
+      - { name: award, label: Award (projects only), widget: string, required: false }
+      - { name: tags, label: Tags, widget: list, default: [cv] }
+      - { name: publish, label: Publish, widget: boolean, default: true }
+      - { name: body, label: Private notes (never published), widget: markdown, required: false }
+
+  # ── Site data ─────────────────────────────────────────────
+  - name: data
+    label: Site data
+    files:
+      - name: services
+        label: Services
+        file: src/data/services.json
+        format: json
+        fields:
+          - { name: _readme, label: Note, widget: hidden }
+          - { name: intro, label: Intro, widget: text }
+          - name: items
+            label: Services
+            widget: list
+            fields:
+              - { name: code, label: Code, widget: string }
+              - { name: title, label: Title, widget: string }
+              - { name: summary, label: Summary, widget: text }
+              - { name: deliverables, label: Deliverables, widget: list }
+              - { name: duration, label: Duration, widget: string }
+              - { name: featured, label: Featured, widget: boolean, default: false }

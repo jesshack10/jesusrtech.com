@@ -17,8 +17,12 @@ const NOTES = '**/*.{md,mdx}';
 /** Ignore Obsidian's own furniture and anything parked as private. */
 const ignore = ['**/_*/**', '**/.obsidian/**', '**/*.excalidraw.md'];
 
+/* Astro's glob loader has no `ignore` option — exclusions go in the pattern
+   itself as negated globs, or private folders would quietly be published. */
+const PATTERN = [NOTES, ...ignore.map((g) => `!${g}`)];
+
 const blog = defineCollection({
-  loader: glob({ pattern: NOTES, base: './src/content/blog', ignore }),
+  loader: glob({ pattern: PATTERN, base: './src/content/blog' }),
   schema: z.object({
     title:       z.string(),
     description: z.string(),
@@ -32,7 +36,7 @@ const blog = defineCollection({
 });
 
 const projects = defineCollection({
-  loader: glob({ pattern: NOTES, base: './src/content/projects', ignore }),
+  loader: glob({ pattern: PATTERN, base: './src/content/projects' }),
   schema: z.object({
     title:       z.string(),
     description: z.string(),
@@ -63,7 +67,7 @@ const projects = defineCollection({
  * rendered on the public CV, so the body doubles as private working notes.
  */
 const cv = defineCollection({
-  loader: glob({ pattern: NOTES, base: './src/content/cv', ignore }),
+  loader: glob({ pattern: PATTERN, base: './src/content/cv' }),
   schema: z.object({
     kind:   z.enum(['experience', 'education', 'certification', 'project']),
     title:  z.string(),
@@ -96,7 +100,7 @@ const cv = defineCollection({
  * `publish: true` are rendered at /decisions.
  */
 const decisions = defineCollection({
-  loader: glob({ pattern: NOTES, base: './src/content/decisions', ignore }),
+  loader: glob({ pattern: PATTERN, base: './src/content/decisions' }),
   schema: z.object({
     title:   z.string(),
     date:    z.coerce.date(),
@@ -113,7 +117,7 @@ const decisions = defineCollection({
  * Private by default, same reasoning as decisions.
  */
 const events = defineCollection({
-  loader: glob({ pattern: NOTES, base: './src/content/events', ignore }),
+  loader: glob({ pattern: PATTERN, base: './src/content/events' }),
   schema: z.object({
     title:   z.string(),
     date:    z.coerce.date(),

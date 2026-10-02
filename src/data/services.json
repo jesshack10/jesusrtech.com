@@ -1,55 +1,55 @@
 {
-  "_readme": "Consulting offers shown on the home page. These are STARTER SUGGESTIONS shaped to the blueprint layout — rewrite every one in your own words. Keep 3 or 4; more dilutes the pitch. 'deliverables' should be concrete nouns a client receives, not activities.",
+  "_readme": "Consulting offers shown on the home page. Keep 3 or 4; more dilutes the pitch. 'deliverables' should be concrete nouns a client receives, not activities.",
 
-  "intro": "Ways we can work together. Every engagement starts with a short call to check the fit — no pitch deck, no pressure.",
+  "intro": "Ten years of C/C++ — from 16-bit tractor controllers to Fire TV middleware — plus the experience to lead the team around the code. Every engagement starts with a short call to check the fit.",
 
   "items": [
     {
       "code": "S-01",
-      "title": "Performance audit",
-      "summary": "TODO — a fixed-scope review of a slow or expensive system, ending in a prioritised plan you can act on with or without me.",
+      "title": "Embedded & C++ development",
+      "summary": "Firmware and application code for microcontrollers, FreeRTOS devices, and Qt interfaces — from the CAN bus to the screen the operator touches. Built the way I did it for seven years at John Deere: tested, simulated, and documented.",
       "deliverables": [
-        "Written findings report with measurements",
-        "Prioritised fix list, ranked by effort against impact",
-        "A walkthrough call with your engineers"
+        "Production C/C++ code with unit tests (Google Test)",
+        "Simulators for your hardware, buses, and protocols, so testing doesn't wait for the device",
+        "Architecture notes and a handover session with your engineers"
       ],
-      "duration": "1–2 weeks",
+      "duration": "4–12 weeks or ongoing",
       "featured": true
     },
     {
       "code": "S-02",
-      "title": "Fractional senior engineer",
-      "summary": "TODO — I join your team part-time to raise the technical bar: shipping features, reviewing code, and mentoring the engineers you already have.",
+      "title": "Device porting & platform integration",
+      "summary": "Moving an app, runtime, or SDK onto new hardware or a new OS. I've ported a major streaming app to Amazon's next-generation Fire TV, adapting Google's Cobalt runtime to a new non-Android operating system.",
       "deliverables": [
-        "Shipped features in your codebase",
-        "Code review and architectural guidance",
-        "Documentation your team keeps after I leave"
+        "Your software running on the target device",
+        "Middleware and API/ABI adapters for the new platform",
+        "Root-cause fixes and an integration report for what comes next"
       ],
-      "duration": "Ongoing, 2–3 days a week",
+      "duration": "Project-based",
       "featured": false
     },
     {
       "code": "S-03",
-      "title": "Greenfield build",
-      "summary": "TODO — from empty repository to production. Best for teams who need a solid foundation laid quickly and correctly.",
+      "title": "Product builds — web & AI",
+      "summary": "Client apps from first sketch to production, like the coaching platform I build and run today: a React front end, a secure backend with role-based access, and AI features that earn their cost.",
       "deliverables": [
-        "Production system, deployed",
-        "CI/CD and monitoring set up",
-        "Handover documentation and a working session"
+        "A deployed React + TypeScript app with its own component library",
+        "Backend with auth, role-based permissions, and CI/CD",
+        "AI features — evaluation, assistants, search — with cost and latency in check"
       ],
-      "duration": "4–12 weeks",
+      "duration": "6–16 weeks, then support",
       "featured": false
     },
     {
       "code": "S-04",
-      "title": "Technical advisory",
-      "summary": "TODO — a recurring call for founders and teams who need a senior engineer to think out loud with before making expensive decisions.",
+      "title": "Technical & engineering leadership",
+      "summary": "A part-time tech lead or engineering manager for your team. I've supervised 10+ engineers across 5 clients, run Scrum and PSI planning, and built the hiring and onboarding process for a growing team.",
       "deliverables": [
-        "Scheduled calls, monthly or fortnightly",
-        "Written recommendations after each session",
-        "Async questions answered between calls"
+        "Sprint cadence, rituals, and stakeholder reporting that stick",
+        "Hiring loops, interview guides, and an onboarding plan",
+        "Code review, architecture guidance, and career mentoring for your engineers"
       ],
-      "duration": "Monthly retainer",
+      "duration": "Ongoing, part-time",
       "featured": false
     }
   ]

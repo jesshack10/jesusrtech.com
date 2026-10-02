@@ -1,0 +1,39 @@
+---
+title: "Mi 70-20-10 — Leadership Coaching Platform"
+description: "A coaching platform for a leadership-development program: submissions with AI-assisted evaluation, coach feedback, action plans, and an AI coach."
+pubDate: 2026-09-01
+status: active
+role: "Lead engineer — design, build, and operations"
+client: "Leadership-development consultancy"
+confidential: true
+year: "2026"
+outcome: "Participants, coaches, and admins run a whole leadership program in one app — from submitting work to getting AI-assisted evaluation and coach feedback."
+metrics:
+  - label: "Access levels"
+    value: "4"
+  - label: "Backend functions"
+    value: "9"
+  - label: "Status"
+    value: "Live"
+tags: ["react", "typescript", "supabase", "ai", "client-work"]
+featured: true
+order: 1
+---
+
+## Problem
+
+A leadership-development program was running on documents, spreadsheets, and email. Participants submitted work, coaches graded it against a rubric, and feedback lived in scattered files — slow for coaches and hard for anyone to follow.
+
+## Approach
+
+I designed and built the platform end to end, and I run it in production.
+
+- **Front end** — a React + TypeScript single-page app, built on a component library I extracted into its own design-system package.
+- **Backend** — Postgres with row-level security, so participants, coaches, and admins each see exactly what their role allows. Role changes can't be made from the client.
+- **AI** — rubric-based evaluation of participant submissions, an AI coach chat, and retrieval over the program's own material, with coaches deciding what feedback is released.
+- **Operations** — admin tools to manage people and coach assignments, login history, a read-only "view as" mode for support, and calendar export for action items.
+- **Delivery** — automated deploys for the app and backend functions on every push.
+
+## Outcome
+
+The program now runs in one place: participants submit and track their plan, coaches review AI-assisted evaluations before releasing feedback, and admins configure the program without touching the database.

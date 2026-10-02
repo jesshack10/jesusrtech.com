@@ -1,13 +1,17 @@
 ---
+import { getCollection } from 'astro:content';
 import NavLink from './NavLink.astro';
 import ThemeToggle from '../ui/ThemeToggle.astro';
 import Button from '../ui/Button.astro';
 import site from '../../data/site.json';
 import { primaryCta } from '../../utils/cta';
 
+/* Like /decisions in the footer: the Videos link appears once there is a video. */
+const hasVideos = (await getCollection('videos')).length > 0;
+
 const navLinks = [
   { href: '/projects', label: 'Work' },
-  { href: '/videos',   label: 'Videos' },
+  ...(hasVideos ? [{ href: '/videos', label: 'Videos' }] : []),
   { href: '/blog',     label: 'Writing' },
   { href: '/cv',       label: 'CV' },
   { href: '/uses',     label: 'Uses' },

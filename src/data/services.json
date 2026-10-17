@@ -1,55 +1,54 @@
 {
   "_readme": "Consulting offers shown on the home page. Keep 3 or 4; more dilutes the pitch. 'deliverables' should be concrete nouns a client receives, not activities.",
 
-  "intro": "Ten years of C/C++ — from 16-bit tractor controllers to Fire TV middleware — plus the experience to lead the team around the code. Every engagement starts with a short call to check the fit.",
+  "intro": "I help small and mid-sized businesses put AI to work: finding where it actually pays off, teaching your team to use it well, and building the custom web apps that tie it into how you already run. Google-certified Generative AI Leader, with ten years of shipping software and leading engineering teams. Every engagement starts with a short call to check the fit.",
 
   "items": [
     {
       "code": "S-01",
-      "title": "Embedded & C++ development",
-      "summary": "Firmware and application code for microcontrollers, FreeRTOS devices, and Qt interfaces — from the CAN bus to the screen the operator touches. Built the way I did it for seven years at John Deere: tested, simulated, and documented.",
+      "title": "AI strategy & team training",
+      "summary": "You know AI matters but not where to start. I look at how your business really runs, find the tasks where AI saves time or money, and train your people to use the right tools safely, so adoption sticks after I leave.",
       "deliverables": [
-        "Production C/C++ code with unit tests (Google Test)",
-        "Simulators for your hardware, buses, and protocols, so testing doesn't wait for the device",
-        "Architecture notes and a handover session with your engineers"
+        "An audit of your workflows with the AI opportunities ranked by payoff and effort",
+        "A step-by-step adoption roadmap, including tools, costs, and data-privacy guardrails",
+        "Hands-on workshops for your team, with playbooks they keep using afterwards"
       ],
-      "duration": "4–12 weeks or ongoing",
+      "duration": "2–6 weeks",
       "featured": true
     },
     {
       "code": "S-02",
-      "title": "Device porting & platform integration",
-      "summary": "Moving an app, runtime, or SDK onto new hardware or a new OS. I've ported a major streaming app to Amazon's next-generation Fire TV, adapting Google's Cobalt runtime to a new non-Android operating system.",
+      "title": "Custom web apps with AI built in",
+      "summary": "When off-the-shelf tools don't fit, I build the app that does: client portals, internal tools, and assistants connected to your own data. The same way I build the coaching platform and event apps I run today, from first sketch to production.",
       "deliverables": [
-        "Your software running on the target device",
-        "Middleware and API/ABI adapters for the new platform",
-        "Root-cause fixes and an integration report for what comes next"
+        "A deployed web app (React + TypeScript) shaped around your process",
+        "A secure backend with logins, role-based permissions, and automated deploys",
+        "AI features (assistants, document search, automations) with costs kept in check"
       ],
-      "duration": "Project-based",
-      "featured": false
+      "duration": "6–16 weeks, then support",
+      "featured": true
     },
     {
       "code": "S-03",
-      "title": "Product builds — web & AI",
-      "summary": "Client apps from first sketch to production, like the coaching platform I build and run today: a React front end, a secure backend with role-based access, and AI features that earn their cost.",
+      "title": "Ongoing AI advisor",
+      "summary": "A part-time AI and tech lead on call for your business. AI tools change every month; I keep you current, review what your team is building, and help you decide what to adopt next and what to skip.",
       "deliverables": [
-        "A deployed React + TypeScript app with its own component library",
-        "Backend with auth, role-based permissions, and CI/CD",
-        "AI features — evaluation, assistants, search — with cost and latency in check"
+        "Monthly strategy sessions and a running list of what to adopt next",
+        "Reviews of vendors, tools, and AI projects before you commit budget",
+        "Mentoring for your team leads as they take ownership of AI work"
       ],
-      "duration": "6–16 weeks, then support",
+      "duration": "Monthly retainer",
       "featured": false
     },
     {
       "code": "S-04",
-      "title": "Technical & engineering leadership",
-      "summary": "A part-time tech lead or engineering manager for your team. I've supervised 10+ engineers across 5 clients, run Scrum and PSI planning, and built the hiring and onboarding process for a growing team.",
+      "title": "Embedded & C++ engineering",
+      "summary": "Where I come from: seven years of firmware and tooling at John Deere, then porting a major streaming app to Amazon's next-generation Fire TV. Still available for C/C++ firmware, device porting, and hardware simulators.",
       "deliverables": [
-        "Sprint cadence, rituals, and stakeholder reporting that stick",
-        "Hiring loops, interview guides, and an onboarding plan",
-        "Code review, architecture guidance, and career mentoring for your engineers"
+        "Production C/C++ code with unit tests",
+        "Ports and integrations for new hardware or operating systems"
       ],
-      "duration": "Ongoing, part-time",
+      "duration": "Project-based",
       "featured": false
     }
   ]

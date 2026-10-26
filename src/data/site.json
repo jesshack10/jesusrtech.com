@@ -3,9 +3,10 @@
   "name": "Jesús Ramírez Nava",
   "shortName": "Jesús",
   "brand": "jesusrtech",
-  "role": "Senior Software Engineer",
-  "positioning": "I build C/C++ systems that have to work — embedded firmware, device ports, and the APIs and AI backends that sit on top of them.",
-  "bio": "Senior software engineer with 10 years in C/C++ — from 16-bit microcontrollers and CAN bus tooling at John Deere to Amazon Fire TV middleware and API backends today. I've led teams of 10+ engineers, served as Scrum Master, and designed the simulators, test tooling, and backends other teams depend on. Independently, I build web and AI products for clients — and real-time apps that make gatherings and events run smoother. Based in Monterrey (UTC-6) and open to remote work with US teams.",
+  "role": "Software Engineer · Custom Software & AI",
+  "focus": "Custom software · AI adoption · Testing & QA · Web",
+  "positioning": "I build the software your business needs — custom apps, AI that saves real hours, websites that bring in clients, and testing that catches problems before your customers do. Built on ten years of C++ and Python engineering.",
+  "bio": "Software engineer with 10 years of C++ and Python, now helping businesses and teams build, adopt, and test the software they run on. I've written firmware and CAN bus tooling at John Deere, ported a major streaming app to Amazon Fire TV, built test automation for release pipelines, and led teams of 10+ engineers. Today I build custom web and AI products for clients — like a leadership-coaching platform with AI-assisted evaluation — and real-time apps that make gatherings and events run smoother. Based in Monterrey (UTC-6), working remotely with clients in US and LATAM time zones.",
   "location": "Monterrey, Mexico",
   "timezone": "UTC-6",
   "remote": true,
@@ -22,7 +23,7 @@
       "limited",
       "closed"
     ],
-    "message": "Taking on new embedded, C++, and product projects — remote, US time zones."
+    "message": "Taking on custom software, AI, web, and QA projects — remote, US & LATAM time zones."
   },
   "socials": [
     {
@@ -80,13 +81,53 @@
     {
       "category": "Languages",
       "items": [
-        "C",
         "C++",
         "Python",
+        "C",
         "C#",
         "Go",
         "SQL",
         "PHP"
+      ]
+    },
+    {
+      "category": "Web & Apps",
+      "items": [
+        "React",
+        "Laravel",
+        "Qt",
+        "PySimpleGUI"
+      ]
+    },
+    {
+      "category": "AI & Backend",
+      "items": [
+        "AI backends",
+        "AI assistants",
+        "API design",
+        "Third-party SDKs",
+        "Systems design"
+      ]
+    },
+    {
+      "category": "Testing & QA",
+      "items": [
+        "Google Test",
+        "Test automation",
+        "Simulators & test tooling",
+        "Release validation",
+        "CI/CD"
+      ]
+    },
+    {
+      "category": "DevOps & Tools",
+      "items": [
+        "Docker",
+        "AWS",
+        "Jenkins",
+        "Linux",
+        "Git",
+        "Jira"
       ]
     },
     {
@@ -97,38 +138,6 @@
         "CAN / J1939",
         "Ethernet",
         "Hardware simulation"
-      ]
-    },
-    {
-      "category": "Frameworks & UI",
-      "items": [
-        "Qt",
-        "React",
-        "Laravel",
-        "PySimpleGUI",
-        "Google Test"
-      ]
-    },
-    {
-      "category": "Backend & Systems",
-      "items": [
-        "API design",
-        "API/ABI integration",
-        "Third-party SDKs",
-        "AI backends",
-        "Systems design"
-      ]
-    },
-    {
-      "category": "DevOps & Tools",
-      "items": [
-        "Docker",
-        "AWS",
-        "Jenkins",
-        "CI/CD",
-        "Linux",
-        "Git",
-        "Jira"
       ]
     },
     {

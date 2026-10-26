@@ -1,47 +1,59 @@
 {
-  "_readme": "Consulting offers shown on the home page. Keep 3 or 4; more dilutes the pitch. 'deliverables' should be concrete nouns a client receives, not activities.",
+  "_readme": "Consulting offers shown on the home page. Keep it to five; more dilutes the pitch. 'deliverables' should be concrete nouns a client receives, not activities. 'other' is the closing tile for work that doesn't fit a card.",
 
-  "intro": "Ten years of C/C++ — from 16-bit tractor controllers to Fire TV middleware — plus the experience to lead the team around the code. Every engagement starts with a short call to check the fit.",
+  "intro": "Whether you need something built, the right tools and AI adopted, or what you already have tested before launch: I bring ten years of C++ and Python engineering to it, and I explain it in plain language. Every engagement starts with a short call to check the fit.",
 
   "items": [
     {
       "code": "S-01",
-      "title": "Embedded & C++ development",
-      "summary": "Firmware and application code for microcontrollers, FreeRTOS devices, and Qt interfaces — from the CAN bus to the screen the operator touches. Built the way I did it for seven years at John Deere: tested, simulated, and documented.",
+      "title": "Custom software development",
+      "summary": "Software built around how your business actually works — internal tools, automations, integrations, and full applications. Written in C++, Python, or TypeScript, depending on what the job needs, with the same rigor I used shipping code for seven years at John Deere.",
       "deliverables": [
-        "Production C/C++ code with unit tests (Google Test)",
-        "Simulators for your hardware, buses, and protocols, so testing doesn't wait for the device",
-        "Architecture notes and a handover session with your engineers"
+        "A working application, tool, or automation — deployed and in use",
+        "Tested code and CI/CD, so every change stays safe to ship",
+        "Documentation and a handover session, so you're never locked in"
       ],
-      "duration": "4–12 weeks or ongoing",
+      "duration": "4–16 weeks or ongoing",
       "featured": true
     },
     {
       "code": "S-02",
-      "title": "Device porting & platform integration",
-      "summary": "Moving an app, runtime, or SDK onto new hardware or a new OS. I've ported a major streaming app to Amazon's next-generation Fire TV, adapting Google's Cobalt runtime to a new non-Android operating system.",
+      "title": "Software & AI adoption",
+      "summary": "Choosing the right tools — and AI — for your workflow, then setting them up so your team actually uses them. No hype: I start with where the hours are lost, then connect off-the-shelf software, AI assistants, and custom glue only where it pays off.",
       "deliverables": [
-        "Your software running on the target device",
-        "Middleware and API/ABI adapters for the new platform",
-        "Root-cause fixes and an integration report for what comes next"
+        "A short audit: where time goes, and which tools or AI can win it back",
+        "Tools and AI assistants set up and connected to your existing systems, with cost and privacy in check",
+        "Training and written guides, so your team keeps using them"
       ],
-      "duration": "Project-based",
+      "duration": "2–8 weeks",
       "featured": false
     },
     {
       "code": "S-03",
-      "title": "Product builds — web & AI",
-      "summary": "Client apps from first sketch to production, like the coaching platform I build and run today: a React front end, a secure backend with role-based access, and AI features that earn their cost.",
+      "title": "Testing & QA",
+      "summary": "Finding the bugs before your customers do. I've built test automation for release pipelines and simulators so teams could test without waiting on hardware — the same discipline applies to your web app, API, or desktop software.",
       "deliverables": [
-        "A deployed React + TypeScript app with its own component library",
-        "Backend with auth, role-based permissions, and CI/CD",
-        "AI features — evaluation, assistants, search — with cost and latency in check"
+        "A test plan focused on what matters most to your users",
+        "Automated tests (Python, Google Test, end-to-end) wired into your CI",
+        "A pre-launch report: what's broken, what's risky, and what to fix first"
       ],
-      "duration": "6–16 weeks, then support",
+      "duration": "1–6 weeks or ongoing",
       "featured": false
     },
     {
       "code": "S-04",
+      "title": "Web design & development",
+      "summary": "Websites and web apps that look professional and bring in business — from a marketing site to a full product with logins and a database. Fast, mobile-friendly, and easy for you to update.",
+      "deliverables": [
+        "A design you approve before development starts",
+        "A fast, responsive site or app (React, Astro), live on your domain",
+        "Basic SEO, analytics, and a way to edit content yourself"
+      ],
+      "duration": "2–10 weeks",
+      "featured": false
+    },
+    {
+      "code": "S-05",
       "title": "Technical & engineering leadership",
       "summary": "A part-time tech lead or engineering manager for your team. I've supervised 10+ engineers across 5 clients, run Scrum and PSI planning, and built the hiring and onboarding process for a growing team.",
       "deliverables": [
@@ -52,5 +64,12 @@
       "duration": "Ongoing, part-time",
       "featured": false
     }
-  ]
+  ],
+
+  "other": {
+    "code": "S-??",
+    "title": "Something else?",
+    "summary": "If it can be solved with software, let's talk. Tell me the problem — not the solution — and I'll tell you honestly whether I'm the right person for it.",
+    "cta": "Describe your problem"
+  }
 }

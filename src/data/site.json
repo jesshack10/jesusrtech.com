@@ -83,7 +83,6 @@
       "items": [
         "C++",
         "Python",
-        "TypeScript",
         "C",
         "C#",
         "Go",
@@ -95,11 +94,9 @@
       "category": "Web & Apps",
       "items": [
         "React",
-        "Astro",
         "Laravel",
         "Qt",
-        "PySimpleGUI",
-        "PWAs"
+        "PySimpleGUI"
       ]
     },
     {
@@ -109,7 +106,6 @@
         "AI assistants",
         "API design",
         "Third-party SDKs",
-        "Supabase",
         "Systems design"
       ]
     },

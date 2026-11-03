@@ -4,6 +4,7 @@
   "shortName": "Jesús",
   "brand": "jesusrtech",
   "role": "AI Consultant & Web Developer",
+  "focus": "AI adoption · Team training · Custom web apps",
   "positioning": "I help businesses adopt AI with confidence: a clear strategy, a team that knows how to use it, and custom web apps that put it to work.",
   "bio": "AI consultant and web developer helping small and mid-sized businesses adopt AI: finding where it pays off, training teams to use it well, and building the custom web apps that put it to work. Google-certified Generative AI Leader. Behind that sits 10 years as a software engineer, from 16-bit microcontrollers and CAN bus tooling at John Deere to Amazon Fire TV middleware and the AI-assisted API backends I work on today. I've led teams of 10+ engineers, served as Scrum Master, and built the hiring and onboarding process for a growing team. Today I build and run web and AI products for clients, including a coaching platform and real-time apps for events. Based in Monterrey (UTC-6) and open to remote work with US teams.",
   "location": "Monterrey, Mexico",
@@ -93,53 +94,13 @@
     {
       "category": "Languages",
       "items": [
+        "C",
         "C++",
         "Python",
-        "C",
         "C#",
         "Go",
         "SQL",
         "PHP"
-      ]
-    },
-    {
-      "category": "Web & Apps",
-      "items": [
-        "React",
-        "Laravel",
-        "Qt",
-        "PySimpleGUI"
-      ]
-    },
-    {
-      "category": "AI & Backend",
-      "items": [
-        "AI backends",
-        "AI assistants",
-        "API design",
-        "Third-party SDKs",
-        "Systems design"
-      ]
-    },
-    {
-      "category": "Testing & QA",
-      "items": [
-        "Google Test",
-        "Test automation",
-        "Simulators & test tooling",
-        "Release validation",
-        "CI/CD"
-      ]
-    },
-    {
-      "category": "DevOps & Tools",
-      "items": [
-        "Docker",
-        "AWS",
-        "Jenkins",
-        "Linux",
-        "Git",
-        "Jira"
       ]
     },
     {

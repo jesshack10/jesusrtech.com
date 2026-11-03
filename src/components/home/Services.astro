@@ -1,6 +1,9 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
 import services from '../../data/services.json';
+import { primaryCta } from '../../utils/cta';
+
+const cta = primaryCta();
 ---
 
 <section class="mx-auto max-w-6xl px-6 py-20" id="services">
@@ -39,5 +42,32 @@ import services from '../../data/services.json';
         </ul>
       </article>
     ))}
+
+    <a
+      href={cta.href}
+      target={cta.external ? '_blank' : undefined}
+      rel={cta.external ? 'noopener noreferrer' : undefined}
+      class="group/other bp-ticks flex flex-col border border-dashed border-border p-6
+             transition-colors duration-200 hover:border-accent/40 hover:bg-surface"
+      data-reveal
+      style={`--reveal-delay: ${services.items.length * 70}ms`}
+    >
+      <div class="mb-4">
+        <span class="bp-label text-accent">{services.other.code}</span>
+      </div>
+
+      <h3 class="text-lg font-semibold tracking-tight text-foreground">
+        {services.other.title}
+      </h3>
+
+      <p class="mt-2.5 text-sm leading-relaxed text-secondary text-pretty">
+        {services.other.summary}
+      </p>
+
+      <span class="mt-auto pt-5 text-sm font-medium text-accent">
+        {services.other.cta}
+        <span aria-hidden="true" class="inline-block transition-transform duration-150 group-hover/other:translate-x-0.5">→</span>
+      </span>
+    </a>
   </div>
 </section>

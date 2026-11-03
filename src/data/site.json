@@ -93,13 +93,53 @@
     {
       "category": "Languages",
       "items": [
-        "C",
         "C++",
         "Python",
+        "C",
         "C#",
         "Go",
         "SQL",
         "PHP"
+      ]
+    },
+    {
+      "category": "Web & Apps",
+      "items": [
+        "React",
+        "Laravel",
+        "Qt",
+        "PySimpleGUI"
+      ]
+    },
+    {
+      "category": "AI & Backend",
+      "items": [
+        "AI backends",
+        "AI assistants",
+        "API design",
+        "Third-party SDKs",
+        "Systems design"
+      ]
+    },
+    {
+      "category": "Testing & QA",
+      "items": [
+        "Google Test",
+        "Test automation",
+        "Simulators & test tooling",
+        "Release validation",
+        "CI/CD"
+      ]
+    },
+    {
+      "category": "DevOps & Tools",
+      "items": [
+        "Docker",
+        "AWS",
+        "Jenkins",
+        "Linux",
+        "Git",
+        "Jira"
       ]
     },
     {

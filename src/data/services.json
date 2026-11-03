@@ -1,5 +1,5 @@
 {
-  "_readme": "Consulting offers shown on the home page. Keep 3 or 4; more dilutes the pitch. 'deliverables' should be concrete nouns a client receives, not activities.",
+  "_readme": "Consulting offers shown on the home page. Keep it to five; more dilutes the pitch. 'deliverables' should be concrete nouns a client receives, not activities. 'other' is the closing tile for work that doesn't fit a card.",
 
   "intro": "I help small and mid-sized businesses put AI to work: finding where it actually pays off, teaching your team to use it well, and building the custom web apps that tie it into how you already run. Google-certified Generative AI Leader, with ten years of shipping software and leading engineering teams. Every engagement starts with a short call to check the fit.",
 
@@ -51,5 +51,12 @@
       "duration": "Project-based",
       "featured": false
     }
-  ]
+  ],
+
+  "other": {
+    "code": "S-??",
+    "title": "Something else?",
+    "summary": "If it can be solved with software, let's talk. Tell me the problem — not the solution — and I'll tell you honestly whether I'm the right person for it.",
+    "cta": "Describe your problem"
+  }
 }

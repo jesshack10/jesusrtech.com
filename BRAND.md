@@ -7,9 +7,9 @@ slides, docs, CVs, social posts, thumbnails, logos. Source of truth for tokens:
 ## Identity
 
 - **Name:** Jesús Ramírez Nava. **Brand:** `jesusrtech` (always lowercase, one word).
-- **Role:** AI Consultant & Web Developer.
+- **Role:** AI Consultant & Software Developer.
 - **Positioning:** "I help businesses adopt AI with confidence: a clear strategy, a team
-  that knows how to use it, and custom web apps that put it to work."
+  that knows how to use it, and custom software that puts it to work."
 - **Based:** Monterrey, Mexico (UTC-6), remote with US teams.
 - **Languages:** English + Spanish. Pick per audience; don't mix in one piece.
 

@@ -1,22 +1,26 @@
 ---
 import site from '../../data/site.json';
+import { t, type Lang } from '../../utils/i18n';
 
 interface Props {
   class?: string;
+  /** On the bilingual homepage, the badge speaks that page's language. */
+  lang?: Lang;
 }
 
-const { class: className } = Astro.props;
+const { class: className, lang } = Astro.props;
 
 const status = site.availability.status as 'open' | 'limited' | 'closed';
+const copy = lang ? t(lang).availability : undefined;
 
 const config = {
-  open:    { dot: 'var(--ok)',     text: 'Available for work' },
-  limited: { dot: 'var(--accent)', text: 'Limited availability' },
-  closed:  { dot: 'var(--text-muted)', text: 'Not taking new work' },
+  open:    { dot: 'var(--ok)',     text: copy?.open    ?? 'Available for work' },
+  limited: { dot: 'var(--accent)', text: copy?.limited ?? 'Limited availability' },
+  closed:  { dot: 'var(--text-muted)', text: copy?.closed ?? 'Not taking new work' },
 };
 
 const { dot, text } = config[status] ?? config.closed;
-const message = site.availability.message?.trim();
+const message = (copy?.message ?? site.availability.message)?.trim();
 ---
 
 <div

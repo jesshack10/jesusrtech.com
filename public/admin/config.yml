@@ -113,24 +113,6 @@ collections:
       - { name: publish, label: Publish, widget: boolean, default: true }
       - { name: body, label: Private notes (never published), widget: markdown, required: false }
 
-  # ── Site data ─────────────────────────────────────────────
-  - name: data
-    label: Site data
-    files:
-      - name: services
-        label: Services
-        file: src/data/services.json
-        format: json
-        fields:
-          - { name: _readme, label: Note, widget: hidden }
-          - { name: intro, label: Intro, widget: text }
-          - name: items
-            label: Services
-            widget: list
-            fields:
-              - { name: code, label: Code, widget: string }
-              - { name: title, label: Title, widget: string }
-              - { name: summary, label: Summary, widget: text }
-              - { name: deliverables, label: Deliverables, widget: list }
-              - { name: duration, label: Duration, widget: string }
-              - { name: featured, label: Featured, widget: boolean, default: false }
+  # Homepage copy (both languages) lives in src/data/home.json. It is edited
+  # in Obsidian or on GitHub, not here: the file is large and nested, and a
+  # CMS form that lists only some of its fields could drop the rest on save.

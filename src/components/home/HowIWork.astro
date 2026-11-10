@@ -1,0 +1,44 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import Button from '../ui/Button.astro';
+import { t, type Lang } from '../../utils/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const copy = t(lang).promise;
+---
+
+<section class="border-t border-line" id="how-i-work">
+  <div class="mx-auto grid max-w-6xl gap-12 px-6 py-20 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
+    <div>
+      <SectionHeading index="03" label={copy.label}>
+        {copy.title}
+      </SectionHeading>
+
+      <ol class="space-y-6">
+        {copy.items.map((item, i) => (
+          <li class="flex gap-4" data-reveal style={`--reveal-delay: ${i * 70}ms`}>
+            <span class="bp-label mt-1 text-accent">{String(i + 1).padStart(2, '0')}</span>
+            <p class="leading-relaxed text-secondary text-pretty">
+              <strong class="font-semibold text-foreground">{item.title}</strong> {item.body}
+            </p>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <aside class="bp-ticks self-start border border-border bg-surface/40 p-6" data-reveal style="--reveal-delay: 120ms">
+      <p class="bp-label">{copy.aboutTitle}</p>
+      <p class="mt-3 text-sm leading-relaxed text-secondary text-pretty">{copy.about}</p>
+      <div class="mt-5">
+        <Button href="/cv" variant="ghost" size="sm">
+          {copy.cvLink}
+          <span aria-hidden="true" class="transition-transform duration-150 group-hover/btn:translate-x-0.5">→</span>
+        </Button>
+      </div>
+    </aside>
+  </div>
+</section>

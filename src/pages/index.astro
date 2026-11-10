@@ -1,20 +1,6 @@
 ---
-import PageLayout from '../layouts/PageLayout.astro';
-import Hero from '../components/home/Hero.astro';
-import Services from '../components/home/Services.astro';
-import FeaturedProjects from '../components/home/FeaturedProjects.astro';
-import FeaturedVideos from '../components/home/FeaturedVideos.astro';
-import ContactCTA from '../components/home/ContactCTA.astro';
-import site from '../data/site.json';
+/* Spanish is the main language of the site; English lives at /en/. */
+import HomePage from '../components/home/HomePage.astro';
 ---
 
-<PageLayout
-  title={`${site.name} — ${site.role}`}
-  description={site.positioning}
->
-  <Hero />
-  <Services />
-  <FeaturedProjects />
-  <FeaturedVideos />
-  <ContactCTA />
-</PageLayout>
+<HomePage lang="es" />

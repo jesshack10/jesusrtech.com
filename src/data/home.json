@@ -1,0 +1,369 @@
+{
+  "_readme": "Homepage copy in both languages. Spanish (es) renders at /, English (en) at /en/. Keep the two in step: every key in one language must exist in the other. Prices are 'starting at' figures; Pymes in MXN on the Spanish page, USD everywhere on the English page.",
+
+  "es": {
+    "meta": {
+      "title": "Jesús Ramírez Nava — Adopción de IA para Pymes y plataformas para coaching",
+      "description": "Te digo dónde la IA sí le sirve a tu empresa, y dónde no. Adopción de IA para Pymes y plataformas con IA para firmas de coaching y capacitación. Monterrey, México."
+    },
+    "nav": {
+      "services": "Servicios",
+      "case": "Caso e-qual",
+      "work": "Proyectos",
+      "writing": "Blog",
+      "cv": "CV",
+      "uses": "Uses",
+      "apps": "Apps",
+      "videos": "Videos",
+      "switchLabel": "EN",
+      "switchTitle": "Read in English",
+      "menu": "Abrir menú"
+    },
+    "cta": {
+      "book": "Agenda una llamada de 30 min",
+      "email": "Escríbeme por correo",
+      "fallback": "Escríbeme"
+    },
+    "availability": {
+      "open": "Disponible",
+      "limited": "Disponibilidad limitada",
+      "closed": "Sin espacio por ahora",
+      "message": "Tomando proyectos de adopción de IA y plataformas — presencial en Monterrey, remoto en México, LATAM y EE.UU."
+    },
+    "hero": {
+      "headline": "Te digo dónde la IA sí le sirve a tu empresa. Y dónde no.",
+      "subheadline": "Ayudo a Pymes de hasta 300 personas a adoptar inteligencia artificial con un plan claro, un equipo capacitado y software a la medida. Si la respuesta es “aquí no conviene”, te lo digo.",
+      "secondary": "Ver el caso e-qual",
+      "specTitle": "Ficha",
+      "spec": [
+        { "key": "rol", "value": "Consultor de IA y desarrollador de software" },
+        { "key": "enfoque", "value": "Adopción de IA para Pymes · Plataformas con IA para coaching y capacitación" },
+        { "key": "base", "value": "Monterrey, México" },
+        { "key": "modalidad", "value": "Presencial en Monterrey · Remoto en México, LATAM y EE.UU." }
+      ],
+      "toolsTitle": "Herramientas",
+      "tools": ["ChatGPT", "Claude", "Automatizaciones", "React", "Next.js", "Python", "Supabase", "Google Cloud"]
+    },
+    "services": {
+      "label": "Servicios",
+      "title": "Dos formas de ayudarte",
+      "lede": "Cada proyecto empieza con una llamada de 30 minutos para ver si tiene sentido. Los precios son puntos de partida; el alcance final se cotiza contigo.",
+      "tracks": [
+        {
+          "code": "01",
+          "title": "Adopción de IA para Pymes",
+          "audience": "Para dueños y directores de empresas de 10 a 300 personas que saben que la IA importa, pero no saben por dónde empezar ni en qué vale la pena invertir.",
+          "offers": [
+            {
+              "title": "Diagnóstico de IA",
+              "price": "Desde $15,000 MXN",
+              "duration": "2 semanas",
+              "summary": "Reviso cómo opera tu empresa hoy y te entrego, por escrito, dónde la IA te ahorra tiempo o dinero y dónde no.",
+              "deliverables": [
+                "Mapa de tus procesos con las oportunidades ordenadas por impacto y esfuerzo",
+                "Lo que NO conviene automatizar, y por qué",
+                "Plan de 90 días con herramientas, costos y reglas para cuidar tus datos",
+                "Si continúas en 30 días, el costo se abona a la implementación"
+              ]
+            },
+            {
+              "title": "Capacitación e implementación",
+              "price": "Desde $35,000 MXN",
+              "duration": "4 a 6 semanas",
+              "summary": "Ponemos el plan en marcha con tu equipo, sobre sus tareas reales.",
+              "deliverables": [
+                "Talleres prácticos de ChatGPT y Claude con casos reales de tu empresa",
+                "Automatizaciones que conectan tus herramientas (correo, hojas de cálculo, CRM)",
+                "Guías de uso que tu equipo sigue usando cuando yo ya no estoy"
+              ]
+            },
+            {
+              "title": "Asesor de IA mensual",
+              "price": "Desde $12,000 MXN al mes",
+              "duration": "Mensual",
+              "summary": "Un líder de IA y tecnología de medio tiempo para tu empresa.",
+              "deliverables": [
+                "Una sesión de estrategia al mes y una lista viva de qué adoptar después",
+                "Reviso proveedores y herramientas antes de que inviertas",
+                "Acompaño a tus líderes mientras toman el control de la IA"
+              ]
+            }
+          ]
+        },
+        {
+          "code": "02",
+          "title": "Plataformas con IA para firmas de coaching y capacitación",
+          "audience": "Para firmas de coaching, consultoría y capacitación que quieren atender a más participantes sin contratar más coaches.",
+          "offers": [
+            {
+              "title": "Tu plataforma a la medida",
+              "price": "Desde $8,000 USD",
+              "duration": "8 a 12 semanas",
+              "summary": "La plataforma donde corre todo tu programa, con la IA haciendo el trabajo repetitivo y el coach decidiendo.",
+              "deliverables": [
+                "Portal para participantes, coaches y administradores, cada uno con su acceso",
+                "Entregas y evaluación asistida por IA, con la retroalimentación final del coach",
+                "Seguimiento de avance por participante y por grupo",
+                "Inicio de sesión seguro, permisos por rol y costos de IA bajo control"
+              ]
+            },
+            {
+              "title": "Soporte y mejoras",
+              "price": "Desde $600 USD al mes",
+              "duration": "Mensual",
+              "summary": "Mantengo tu plataforma al día, segura y creciendo con tu programa.",
+              "deliverables": [
+                "Monitoreo, respaldos y actualizaciones",
+                "Mejoras pequeñas cada mes según lo que pidan tus coaches"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "case": {
+      "label": "Caso",
+      "title": "e-qual: un coach, 20+ horas libres a la semana",
+      "client": "e-qual",
+      "clientUrl": "https://e-qual.mx",
+      "project": "Mi 70-20-10 — plataforma de coaching de liderazgo",
+      "challengeLabel": "El reto",
+      "challenge": "e-qual imparte un programa de desarrollo de liderazgo. Corría entre documentos, hojas de cálculo y correos: el coach calificaba cada entrega a mano y la retroalimentación vivía en archivos dispersos.",
+      "builtLabel": "Lo que construí",
+      "built": "Una plataforma donde participantes, coaches y administradores llevan todo el programa: entregas, evaluación asistida por IA y retroalimentación del coach. La diseñé, la construí y la opero en producción.",
+      "resultLabel": "El resultado",
+      "metrics": [
+        { "value": "20+ h", "label": "ahorradas a la semana por coach" },
+        { "value": "13", "label": "participantes con 1 solo coach" },
+        { "value": "En vivo", "label": "en producción hoy" }
+      ],
+      "link": "Ver el caso completo"
+    },
+    "promise": {
+      "label": "Cómo trabajo",
+      "title": "Honestidad antes que venta",
+      "items": [
+        { "title": "Te digo dónde no.", "body": "Si la IA no te sirve en un proceso, te lo digo, aunque eso signifique un proyecto menos para mí." },
+        { "title": "A veces no es IA.", "body": "Si lo que necesitas es software tradicional, una hoja de cálculo mejor organizada o ningún cambio, también te lo digo." },
+        { "title": "Precios claros.", "body": "Sabes cuánto cuesta antes de empezar." }
+      ],
+      "aboutTitle": "Sobre mí",
+      "about": "Soy Jesús Ramírez Nava, ingeniero de software en Monterrey. Llevo diez años construyendo software y liderando equipos: siete años de firmware en John Deere, la migración de una app de streaming al nuevo Fire TV de Amazon y hoy plataformas con IA en producción. Tengo la certificación Generative AI Leader de Google.",
+      "cvLink": "Ver mi CV"
+    },
+    "lab": {
+      "label": "Laboratorio",
+      "title": "Donde pruebo ideas",
+      "lede": "Proyectos propios donde pruebo ideas antes de llevarlas a clientes.",
+      "items": [
+        { "slug": "carterapp", "title": "carterapp", "body": "App de finanzas personales que registra un gasto en 3 toques y funciona sin señal.", "url": "https://carterapp.com.mx" },
+        { "slug": "apps-jesusrtech", "title": "apps.jesusrtech.com", "body": "Juegos en tiempo real para grupos, desde el celular y sin cuentas.", "url": "https://apps.jesusrtech.com" },
+        { "slug": "iot-biosignal-platform", "title": "Plataforma IoT de bioseñales", "body": "Monitoreo en tiempo real de humedad, temperatura y ritmo cardiaco. Ganadora del reto Intel en SISCTI 40." }
+      ],
+      "all": "Todos los proyectos"
+    },
+    "faq": {
+      "label": "Preguntas",
+      "title": "Preguntas frecuentes",
+      "items": [
+        { "q": "¿Necesito saber de tecnología?", "a": "No. Te explico todo en lenguaje de negocio." },
+        { "q": "¿Trabajas presencial?", "a": "Sí, en Monterrey. En el resto de México, LATAM y EE.UU., remoto." },
+        { "q": "¿Qué pasa con mis datos?", "a": "Cada plan incluye reglas claras de qué se comparte con herramientas de IA y qué no." },
+        { "q": "¿Y si la IA no me sirve?", "a": "Te lo digo en el diagnóstico, con razones, y te quedas con el plan." }
+      ]
+    },
+    "closing": {
+      "title": "¿Dónde se le va el tiempo a tu empresa?",
+      "body": "Cuéntame cómo trabajas hoy y dónde se siente lento. En 30 minutos te digo si la IA o un software a la medida te ayudan, o si no es el momento."
+    },
+    "videos": {
+      "label": "Video",
+      "title": "Mírame trabajar",
+      "lede": "Charlas, tutoriales y bitácoras de construcción.",
+      "all": "Todos los videos"
+    }
+  },
+
+  "en": {
+    "meta": {
+      "title": "Jesús Ramírez Nava — AI adoption for SMBs & platforms for coaching firms",
+      "description": "I'll tell you where AI actually pays off in your business, and where it doesn't. AI adoption for SMBs and AI platforms for coaching and training firms. Monterrey, Mexico."
+    },
+    "nav": {
+      "services": "Services",
+      "case": "e-qual case",
+      "work": "Work",
+      "writing": "Writing",
+      "cv": "CV",
+      "uses": "Uses",
+      "apps": "Apps",
+      "videos": "Videos",
+      "switchLabel": "ES",
+      "switchTitle": "Leer en español",
+      "menu": "Toggle menu"
+    },
+    "cta": {
+      "book": "Book a 30-min call",
+      "email": "Email me",
+      "fallback": "Get in touch"
+    },
+    "availability": {
+      "open": "Available for work",
+      "limited": "Limited availability",
+      "closed": "Not taking new work",
+      "message": "Taking AI adoption and platform projects — on-site in Monterrey, remote across Mexico, LATAM and the US."
+    },
+    "hero": {
+      "headline": "I'll tell you where AI actually pays off in your business. And where it doesn't.",
+      "subheadline": "I help companies of up to 300 people adopt AI with a clear plan, a trained team and custom software. If the answer is “not here,” I'll say so.",
+      "secondary": "See the e-qual case",
+      "specTitle": "Specification",
+      "spec": [
+        { "key": "role", "value": "AI consultant & software developer" },
+        { "key": "focus", "value": "AI adoption for SMBs · AI platforms for coaching & training firms" },
+        { "key": "based", "value": "Monterrey, Mexico" },
+        { "key": "mode", "value": "On-site in Monterrey · Remote across Mexico, LATAM and the US" }
+      ],
+      "toolsTitle": "Tools",
+      "tools": ["ChatGPT", "Claude", "Automations", "React", "Next.js", "Python", "Supabase", "Google Cloud"]
+    },
+    "services": {
+      "label": "Services",
+      "title": "Two ways I can help",
+      "lede": "Every engagement starts with a 30-minute call to check the fit. Prices are starting points; the final scope is quoted with you.",
+      "tracks": [
+        {
+          "code": "01",
+          "title": "AI adoption for small and mid-sized businesses",
+          "audience": "For owners and leaders of 10–300 person companies who know AI matters but don't know where to start or what's worth paying for.",
+          "offers": [
+            {
+              "title": "AI Diagnostic",
+              "price": "From $800 USD",
+              "duration": "2 weeks",
+              "summary": "I look at how your business runs today and give you, in writing, where AI saves time or money and where it doesn't.",
+              "deliverables": [
+                "A map of your processes with opportunities ranked by payoff and effort",
+                "What NOT to automate, and why",
+                "A 90-day plan with tools, costs and data-privacy rules",
+                "Continue within 30 days and the fee is credited toward implementation"
+              ]
+            },
+            {
+              "title": "Training + implementation",
+              "price": "From $1,900 USD",
+              "duration": "4–6 weeks",
+              "summary": "We put the plan to work with your team, on their real tasks.",
+              "deliverables": [
+                "Hands-on ChatGPT and Claude workshops built on your own real tasks",
+                "Automations that connect your tools (email, spreadsheets, CRM)",
+                "Playbooks your team keeps using after I leave"
+              ]
+            },
+            {
+              "title": "Monthly AI advisor",
+              "price": "From $650 USD / month",
+              "duration": "Monthly",
+              "summary": "A part-time AI and tech lead for your business.",
+              "deliverables": [
+                "A monthly strategy session and a running list of what to adopt next",
+                "Reviews of vendors and tools before you commit budget",
+                "Mentoring for your leads as they take ownership of AI"
+              ]
+            }
+          ]
+        },
+        {
+          "code": "02",
+          "title": "AI platforms for coaching and training firms",
+          "audience": "For coaching, consulting and training firms that want to serve more participants without hiring more coaches.",
+          "offers": [
+            {
+              "title": "Your custom platform",
+              "price": "From $8,000 USD",
+              "duration": "8–12 weeks",
+              "summary": "The platform your whole program runs on, with AI doing the repetitive work and the coach making the calls.",
+              "deliverables": [
+                "A portal for participants, coaches and admins, each with their own access",
+                "Submissions with AI-assisted evaluation, and the coach's final feedback",
+                "Progress tracking per participant and per cohort",
+                "Secure logins, role-based permissions and AI costs kept in check"
+              ]
+            },
+            {
+              "title": "Support + improvements",
+              "price": "From $600 USD / month",
+              "duration": "Monthly",
+              "summary": "I keep your platform current, secure and growing with your program.",
+              "deliverables": [
+                "Monitoring, backups and updates",
+                "Small improvements each month based on what your coaches ask for"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "case": {
+      "label": "Case study",
+      "title": "e-qual: one coach, 20+ hours back every week",
+      "client": "e-qual",
+      "clientUrl": "https://e-qual.mx",
+      "project": "Mi 70-20-10 — leadership coaching platform",
+      "challengeLabel": "The challenge",
+      "challenge": "e-qual runs a leadership-development program. It ran on documents, spreadsheets and email: the coach graded every submission by hand, and feedback lived in scattered files.",
+      "builtLabel": "What I built",
+      "built": "A platform where participants, coaches and admins run the whole program: submissions, AI-assisted evaluation and coach feedback. I designed it, built it and run it in production.",
+      "resultLabel": "The result",
+      "metrics": [
+        { "value": "20+ h", "label": "saved per coach every week" },
+        { "value": "13", "label": "participants with 1 coach" },
+        { "value": "Live", "label": "in production today" }
+      ],
+      "link": "Read the full case study"
+    },
+    "promise": {
+      "label": "How I work",
+      "title": "Honesty before the sale",
+      "items": [
+        { "title": "I'll tell you where not to use AI.", "body": "Even if it means one less project for me." },
+        { "title": "Sometimes it isn't AI.", "body": "If you need plain software, a better-organized spreadsheet or no change at all, I'll tell you that too." },
+        { "title": "Clear prices.", "body": "You know the cost before we start." }
+      ],
+      "aboutTitle": "About me",
+      "about": "I'm Jesús Ramírez Nava, a software engineer in Monterrey, Mexico. I've spent ten years shipping software and leading teams: seven years of firmware at John Deere, porting a major streaming app to Amazon's next-generation Fire TV, and now AI platforms in production. I'm a Google-certified Generative AI Leader.",
+      "cvLink": "See my CV"
+    },
+    "lab": {
+      "label": "Lab",
+      "title": "Where I test ideas",
+      "lede": "My own projects, where I test ideas before bringing them to clients.",
+      "items": [
+        { "slug": "carterapp", "title": "carterapp", "body": "A personal finance app that logs an expense in 3 taps and works offline.", "url": "https://carterapp.com.mx" },
+        { "slug": "apps-jesusrtech", "title": "apps.jesusrtech.com", "body": "Real-time group games played from phones, no accounts needed.", "url": "https://apps.jesusrtech.com" },
+        { "slug": "iot-biosignal-platform", "title": "IoT biosignal platform", "body": "Real-time humidity, temperature and heart-rate sensing. Winner of the Intel challenge at SISCTI 40." }
+      ],
+      "all": "All projects"
+    },
+    "faq": {
+      "label": "FAQ",
+      "title": "Questions people ask",
+      "items": [
+        { "q": "Do I need to be technical?", "a": "No. I explain everything in business terms." },
+        { "q": "Do you work on-site?", "a": "Yes, in Monterrey. Everywhere else, remotely." },
+        { "q": "What about my data?", "a": "Every plan includes clear rules on what goes into AI tools and what doesn't." },
+        { "q": "What if AI isn't a fit for me?", "a": "I'll tell you in the diagnostic, with reasons, and you keep the plan." }
+      ]
+    },
+    "closing": {
+      "title": "Where is your business losing time?",
+      "body": "Tell me how you work today and where it feels slow. In 30 minutes I'll tell you whether AI or custom software can help, or whether now isn't the time."
+    },
+    "videos": {
+      "label": "Video",
+      "title": "Watch me work",
+      "lede": "Talks, walkthroughs, and build logs — the fastest way to see how I think through a problem.",
+      "all": "All videos"
+    }
+  }
+}

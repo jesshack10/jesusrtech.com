@@ -3,21 +3,21 @@ import Button from '../ui/Button.astro';
 import AvailabilityBadge from '../ui/AvailabilityBadge.astro';
 import site from '../../data/site.json';
 import { primaryCta } from '../../utils/cta';
+import { t, type Lang } from '../../utils/i18n';
 
-const cta = primaryCta();
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const copy = t(lang).hero;
+const cta = primaryCta(lang);
 
 /* The spec panel — metadata as a drawing-sheet title block. */
-const spec: { key: string; value: string }[] = [
-  { key: 'role',     value: site.role },
-  { key: 'focus',    value: site.focus },
-  { key: 'based',    value: site.location },
-  { key: 'timezone', value: site.timezone },
-  { key: 'remote',   value: site.remote ? 'worldwide' : 'on-site' },
-];
+const spec = copy.spec;
 
-/* Lead with breadth of stack rather than a self-assessed skill level —
-   clients scan for their own technology, not for adjectives. */
-const stack = site.stack.flatMap((group) => group.items).slice(0, 8);
+/* The tools a client will recognise, not the whole CV skill list. */
+const stack = copy.tools;
 ---
 
 <section class="relative overflow-hidden border-b border-line">
@@ -32,15 +32,19 @@ const stack = site.stack.flatMap((group) => group.items).slice(0, 8);
       <!-- ── Pitch ───────────────────────────────────────────── -->
       <div>
         <div data-reveal>
-          <AvailabilityBadge />
+          <AvailabilityBadge lang={lang} />
         </div>
 
+        <p class="bp-label mt-7" data-reveal style="--reveal-delay: 60ms">
+          {site.name}
+        </p>
+
         <h1
-          class="mt-7 text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl text-balance"
+          class="mt-3 text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-5xl text-balance"
           data-reveal
           style="--reveal-delay: 80ms"
         >
-          {site.name}
+          {copy.headline}
         </h1>
 
         <p
@@ -48,7 +52,7 @@ const stack = site.stack.flatMap((group) => group.items).slice(0, 8);
           data-reveal
           style="--reveal-delay: 160ms"
         >
-          {site.positioning}
+          {copy.subheadline}
         </p>
 
         <div
@@ -63,8 +67,7 @@ const stack = site.stack.flatMap((group) => group.items).slice(0, 8);
               class="transition-transform duration-150 group-hover/btn:translate-x-0.5"
             >→</span>
           </Button>
-          <Button href="/projects" variant="secondary">See the work</Button>
-          <Button href="/cv" variant="ghost" size="sm">CV</Button>
+          <Button href="#case" variant="secondary">{copy.secondary}</Button>
         </div>
       </div>
 
@@ -75,21 +78,21 @@ const stack = site.stack.flatMap((group) => group.items).slice(0, 8);
         style="--reveal-delay: 320ms"
       >
         <div class="flex items-center justify-between border-b border-line px-5 py-3">
-          <span class="bp-label">Specification</span>
+          <span class="bp-label">{copy.specTitle}</span>
           <span class="bp-label text-accent">v2026.1</span>
         </div>
 
         <dl class="divide-y divide-line">
           {spec.map(({ key, value }) => (
             <div class="flex items-baseline gap-4 px-5 py-3">
-              <dt class="bp-label w-20 shrink-0">{key}</dt>
+              <dt class="bp-label w-24 shrink-0">{key}</dt>
               <dd class="text-[13px] leading-snug text-foreground">{value}</dd>
             </div>
           ))}
         </dl>
 
         <div class="border-t border-line px-5 py-4">
-          <span class="bp-label">Stack</span>
+          <span class="bp-label">{copy.toolsTitle}</span>
           <ul class="mt-3 flex flex-wrap gap-1.5">
             {stack.map((item) => (
               <li class="rounded-[2px] border border-border px-1.5 py-0.5 font-mono text-[11px] leading-none text-secondary">

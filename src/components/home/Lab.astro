@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import SectionHeading from '../ui/SectionHeading.astro';
+import Button from '../ui/Button.astro';
+import { t, type Lang } from '../../utils/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const copy = t(lang).lab;
+
+/* Each lab item links to its case-study page when one exists, otherwise
+   to its live site — never to a 404. */
+const projectIds = new Set((await getCollection('projects')).map((p) => p.id));
+const items = copy.items.map((item) => ({
+  ...item,
+  href: projectIds.has(item.slug) ? `/projects/${item.slug}` : ('url' in item ? item.url : undefined),
+}));
+---
+
+<section class="border-t border-line" id="lab">
+  <div class="mx-auto max-w-6xl px-6 py-20">
+    <SectionHeading index="04" label={copy.label} lede={copy.lede}>
+      {copy.title}
+    </SectionHeading>
+
+    <ul class="grid gap-3 md:grid-cols-3">
+      {items.map((item, i) => (
+        <li
+          class="bp-ticks relative flex flex-col border border-border bg-surface/40 p-5
+                 transition-colors duration-200 hover:border-accent/40 hover:bg-surface"
+          data-reveal
+          style={`--reveal-delay: ${i * 70}ms`}
+        >
+          <h3 class="font-semibold tracking-tight text-foreground">
+            {item.href ? (
+              <a href={item.href} class="transition-colors after:absolute after:inset-0 hover:text-accent">
+                {item.title}
+              </a>
+            ) : item.title}
+          </h3>
+          <p class="mt-2 text-sm leading-relaxed text-secondary text-pretty">{item.body}</p>
+        </li>
+      ))}
+    </ul>
+
+    <div class="mt-8">
+      <Button href="/projects" variant="secondary" size="sm">
+        {copy.all}
+        <span aria-hidden="true" class="transition-transform duration-150 group-hover/btn:translate-x-0.5">→</span>
+      </Button>
+    </div>
+  </div>
+</section>

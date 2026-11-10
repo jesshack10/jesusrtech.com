@@ -19,7 +19,8 @@ twice.
 
 | Route | Description |
 |---|---|
-| `/` | Hero, services, featured case studies, videos, contact CTA |
+| `/` | Homepage in Spanish: hero, services, e-qual case study, how I work, lab, FAQ, contact CTA |
+| `/en/` | The same homepage in English |
 | `/projects` | Case-study grid + individual project pages |
 | `/videos` | Talks, walkthroughs, and streams |
 | `/blog` | Post list + individual post pages |
@@ -166,10 +167,12 @@ Two fields behave conditionally, so the site never ships a dead control:
 
 A social entry whose `url` still says `TODO` is filtered out of every list.
 
-### Services — `src/data/services.json`
+### Homepage copy — `src/data/home.json`
 
-The consulting offers on the home page. Keep 3–4. `deliverables` should be concrete
-things a client receives, not activities.
+Everything the homepage says, in both languages: `es` renders at `/`, `en` at
+`/en/`. Services and prices live here too. Keep the two languages in step —
+every key in one must exist in the other. Every other page is English-only for
+now.
 
 ### Videos — `src/data/videos.json`
 
@@ -302,7 +305,7 @@ src/
 │   └── events/      ← milestones (private by default)
 ├── data/
 │   ├── site.json    ← identity, socials, booking, availability, skills
-│   ├── services.json← consulting offers
+│   ├── home.json    ← homepage copy, Spanish + English
 │   ├── videos.json  ← video list (schema-validated)
 │   └── uses.json    ← tools/gear data
 ├── pages/           ← routes

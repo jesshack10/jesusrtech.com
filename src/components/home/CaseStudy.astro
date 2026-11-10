@@ -1,0 +1,68 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import Button from '../ui/Button.astro';
+import { t, type Lang } from '../../utils/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const copy = t(lang).case;
+---
+
+<section class="border-t border-line" id="case">
+  <div class="mx-auto max-w-6xl px-6 py-20">
+    <SectionHeading index="02" label={copy.label}>
+      {copy.title}
+    </SectionHeading>
+
+    <article class="bp-ticks border border-border bg-surface/40" data-reveal>
+      <!-- Header strip: client and project -->
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-1 border-b border-line px-6 py-3">
+        <a
+          href={copy.clientUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bp-label text-accent transition-opacity hover:opacity-70"
+        >
+          {copy.client} ↗
+        </a>
+        <span aria-hidden="true" class="h-3 w-px bg-border"></span>
+        <span class="bp-label">{copy.project}</span>
+      </div>
+
+      <div class="grid gap-8 p-6 lg:grid-cols-[1.3fr_1fr] lg:gap-12">
+        <div class="space-y-6">
+          <div>
+            <p class="bp-label">{copy.challengeLabel}</p>
+            <p class="mt-2 leading-relaxed text-secondary text-pretty">{copy.challenge}</p>
+          </div>
+          <div>
+            <p class="bp-label">{copy.builtLabel}</p>
+            <p class="mt-2 leading-relaxed text-secondary text-pretty">{copy.built}</p>
+          </div>
+        </div>
+
+        <div>
+          <p class="bp-label">{copy.resultLabel}</p>
+          <dl class="mt-3 divide-y divide-line border-y border-line">
+            {copy.metrics.map((metric) => (
+              <div class="flex items-baseline gap-4 py-4">
+                <dt class="w-24 shrink-0 text-2xl font-semibold tracking-tight text-foreground">{metric.value}</dt>
+                <dd class="text-sm leading-snug text-secondary">{metric.label}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </article>
+
+    <div class="mt-8">
+      <Button href="/projects/mi-70-20-10" variant="secondary" size="sm">
+        {copy.link}
+        <span aria-hidden="true" class="transition-transform duration-150 group-hover/btn:translate-x-0.5">→</span>
+      </Button>
+    </div>
+  </div>
+</section>

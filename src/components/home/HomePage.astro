@@ -1,0 +1,38 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Hero from './Hero.astro';
+import Services from './Services.astro';
+import CaseStudy from './CaseStudy.astro';
+import HowIWork from './HowIWork.astro';
+import Lab from './Lab.astro';
+import Faq from './Faq.astro';
+import FeaturedVideos from './FeaturedVideos.astro';
+import ContactCTA from './ContactCTA.astro';
+import { t, homePath, type Lang } from '../../utils/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const copy = t(lang);
+
+/* Both homepages point at each other so search engines serve the right one. */
+const alternates = (['es', 'en'] as const).map((l) => ({ lang: l, href: homePath(l) }));
+---
+
+<PageLayout
+  title={copy.meta.title}
+  description={copy.meta.description}
+  lang={lang}
+  alternates={alternates}
+>
+  <Hero lang={lang} />
+  <Services lang={lang} />
+  <CaseStudy lang={lang} />
+  <HowIWork lang={lang} />
+  <Lab lang={lang} />
+  <Faq lang={lang} />
+  <FeaturedVideos lang={lang} />
+  <ContactCTA lang={lang} />
+</PageLayout>

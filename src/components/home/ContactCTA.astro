@@ -3,8 +3,15 @@ import Button from '../ui/Button.astro';
 import AvailabilityBadge from '../ui/AvailabilityBadge.astro';
 import site from '../../data/site.json';
 import { primaryCta, hasBooking } from '../../utils/cta';
+import { t, type Lang } from '../../utils/i18n';
 
-const cta = primaryCta();
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const copy = t(lang);
+const cta = primaryCta(lang);
 ---
 
 <section class="relative overflow-hidden border-t border-line" id="contact">
@@ -16,7 +23,7 @@ const cta = primaryCta();
 
   <div class="relative mx-auto max-w-3xl px-6 py-24 text-center">
     <div class="flex justify-center" data-reveal>
-      <AvailabilityBadge />
+      <AvailabilityBadge lang={lang} />
     </div>
 
     <h2
@@ -24,7 +31,7 @@ const cta = primaryCta();
       data-reveal
       style="--reveal-delay: 80ms"
     >
-      Ready to put AI to work in your business?
+      {copy.closing.title}
     </h2>
 
     <p
@@ -32,9 +39,7 @@ const cta = primaryCta();
       data-reveal
       style="--reveal-delay: 160ms"
     >
-      Tell me how your business runs today and where it feels slow. We'll find
-      where AI or a custom app actually helps. If I'm not the right person for it,
-      I'll say so — and point you at someone who is.
+      {copy.closing.body}
     </p>
 
     <div
@@ -49,7 +54,7 @@ const cta = primaryCta();
 
       {hasBooking() && (
         <Button href={`mailto:${site.email}`} variant="secondary">
-          Or send an email
+          {copy.cta.email}
         </Button>
       )}
     </div>

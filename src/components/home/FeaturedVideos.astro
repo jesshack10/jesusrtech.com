@@ -3,6 +3,14 @@ import { getCollection } from 'astro:content';
 import VideoCard from '../videos/VideoCard.astro';
 import SectionHeading from '../ui/SectionHeading.astro';
 import Button from '../ui/Button.astro';
+import { t, type Lang } from '../../utils/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const copy = t(lang).videos;
 
 const all = await getCollection('videos');
 
@@ -19,12 +27,12 @@ const videos = pool
     <div class="mx-auto max-w-6xl px-6 py-20">
       <div class="flex flex-wrap items-end justify-between gap-4">
         <SectionHeading
-          index="03"
-          label="Video"
-          lede="Talks, walkthroughs, and build logs — the fastest way to see how I think through a problem."
+          index="06"
+          label={copy.label}
+          lede={copy.lede}
           class="mb-10 flex-1"
         >
-          Watch me work
+          {copy.title}
         </SectionHeading>
       </div>
 
@@ -36,7 +44,7 @@ const videos = pool
 
       <div class="mt-8">
         <Button href="/videos" variant="secondary" size="sm">
-          All videos
+          {copy.all}
           <span aria-hidden="true" class="transition-transform duration-150 group-hover/btn:translate-x-0.5">→</span>
         </Button>
       </div>
